@@ -11,6 +11,9 @@ export default {
       fontFamily: {
         primary: ["'Press Start 2P'", 'sans-serif'],
       },
+      screens: {
+        desktop: '1024px',
+      },
     },
   },
   plugins: [],
