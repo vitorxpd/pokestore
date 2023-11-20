@@ -1,7 +1,6 @@
-import { Header } from './components/Header';
-
+import { DefaultLayout } from './layouts/DefaultLayout';
 import './styles/globals.css';
 
 export function App() {
-  return <Header />;
+  return <DefaultLayout />;
 }
