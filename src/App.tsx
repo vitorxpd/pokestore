@@ -1,6 +1,6 @@
-import { DefaultLayout } from './layouts/DefaultLayout';
+import { Router } from './Router';
 import './styles/globals.css';
 
 export function App() {
-  return <DefaultLayout />;
+  return <Router />;
 }
