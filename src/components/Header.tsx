@@ -17,11 +17,13 @@ export function Header() {
         }}
       >
         <div className="flex items-center justify-between flex-1">
-          <img
-            src={logo}
-            alt="Pokéstore Logo"
-            className="desktop:w-[312px] desktop:h-[78px]"
-          />
+          <a href="/">
+            <img
+              src={logo}
+              alt="Pokéstore Logo"
+              className="desktop:w-[312px] desktop:h-[78px]"
+            />
+          </a>
 
           <button className="relative">
             <img
