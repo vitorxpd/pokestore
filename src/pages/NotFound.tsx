@@ -4,7 +4,7 @@ import snorlax from '../assets/snorlax.svg';
 
 export function NotFound() {
   return (
-    <div className="mt-[54px] pb-4">
+    <main className="mt-[54px] pb-4">
       <img
         src={snorlax}
         alt="Snorlax"
@@ -23,6 +23,6 @@ export function NotFound() {
           go to home
         </Link>
       </div>
-    </div>
+    </main>
   );
 }
