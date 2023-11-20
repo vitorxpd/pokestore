@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 import cartIcon from '../assets/icons/cart.svg';
 import magnifierIcon from '../assets/icons/magnifier.svg';
 import logo from '../assets/pokestore.svg';
@@ -17,13 +19,13 @@ export function Header() {
         }}
       >
         <div className="flex items-center justify-between flex-1">
-          <a href="/">
+          <Link to="/">
             <img
               src={logo}
               alt="Pokéstore Logo"
               className="desktop:w-[312px] desktop:h-[78px]"
             />
-          </a>
+          </Link>
 
           <button className="relative">
             <img
