@@ -1,3 +1,4 @@
+import { pokemonColors } from '../../utils/pokemonColors';
 import { httpClient } from '../httpClient';
 
 export interface PokemonResponse {
@@ -6,6 +7,11 @@ export interface PokemonResponse {
   base_experience: number;
   height: number;
   weight: number;
+  types: {
+    type: {
+      name: keyof typeof pokemonColors;
+    };
+  }[];
   sprites: {
     other: {
       dream_world: {
@@ -16,7 +22,7 @@ export interface PokemonResponse {
 }
 
 export async function getPokemon(name: string) {
-  const { data } = await httpClient.get(`/pokemon/${name}`);
+  const { data } = await httpClient.get<PokemonResponse>(`/pokemon/${name}`);
 
   return { pokemon: data };
 }
