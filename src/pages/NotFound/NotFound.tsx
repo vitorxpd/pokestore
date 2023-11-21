@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-import snorlax from '../../assets/images/snorlax.svg';
+import snorlax from '../../assets/snorlax.svg';
 
 export function NotFound() {
   return (
