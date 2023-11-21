@@ -16,7 +16,7 @@ export function Card({ id, name, price, sprite, types }: Pokemon) {
         <img
           src={sprite || pokeball}
           alt="Pokéball"
-          className="desktop:w-[142px] desktop:h-[142px]"
+          className="w-[92px] h-[92px] desktop:w-[142px] desktop:h-[142px]"
         />
       </div>
 
