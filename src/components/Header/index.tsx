@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 import cartIcon from '../../assets/icons/cart.svg';
 import magnifierIcon from '../../assets/icons/magnifier.svg';
-import logo from '../../assets/pokestore.svg';
+import logo from '../../assets/images/pokestore.svg';
 import { cn } from '../../utils/cn';
 
 import { LineDecoration } from './LineDecoration';

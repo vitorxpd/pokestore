@@ -1,5 +1,5 @@
 import cartIcon from '../../assets/icons/cart.svg';
-import pokeball from '../../assets/pokeball.svg';
+import pokeball from '../../assets/images/pokeball.svg';
 import { cn } from '../../utils/cn';
 
 export function Card() {
