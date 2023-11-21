@@ -13,7 +13,7 @@ import { pokemonColors } from '../../utils/pokemonColors';
 export function useHomeController() {
   const [pokemonData, setPokemonData] = useState({} as PokemonsResponse);
   const [pokemons, setPokemons] = useState<Pokemon[]>([]);
-  const [isLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -66,6 +66,7 @@ export function useHomeController() {
 
   useEffect(() => {
     async function loadPokemons() {
+      setIsLoading(true);
       await delay();
 
       pokemonData?.results?.forEach(async (singlePokemon) => {
@@ -105,6 +106,8 @@ export function useHomeController() {
           setPokemons((prevState) => [...prevState, newPokemon]);
         } catch {
           //
+        } finally {
+          setIsLoading(false);
         }
       });
     }
