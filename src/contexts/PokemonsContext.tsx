@@ -1,9 +1,10 @@
 import { createContext, useEffect, useState } from 'react';
 
-import { getPokemon } from '../services/pokemons';
+import { pokemonsService, PokemonResponse } from '../services/pokemonsService';
+import { getPokemonPrice } from '../utils/getPokemonPrice';
 
-interface Pokemon {
-  id: string;
+interface Pokemon extends PokemonResponse {
+  price: number;
 }
 
 interface PokemonsContextProps {
@@ -23,10 +24,24 @@ export function PokemonsProvider({ children }: { children: React.ReactNode }) {
     async function loadPokemons() {
       Array.from({ length: 151 }).map(async (_, index) => {
         try {
-          const id = index + 1;
-          const { pokemon } = await getPokemon(id, controller.signal);
+          const pokemonId = index + 1;
+          const {
+            pokemon: { base_experience, height, id, name, sprites, weight },
+          } = await pokemonsService.getPokemon(pokemonId, controller.signal);
 
-          setPokemons((prevState) => [...prevState, pokemon]);
+          const { price } = await getPokemonPrice(name);
+
+          const newPokemon: Pokemon = {
+            base_experience,
+            height,
+            id,
+            name,
+            price,
+            sprites,
+            weight,
+          };
+
+          setPokemons((prevState) => [...prevState, newPokemon]);
         } catch {
           //
         } finally {
@@ -35,14 +50,12 @@ export function PokemonsProvider({ children }: { children: React.ReactNode }) {
       });
     }
 
-    if (pokemons.length === 0) {
-      loadPokemons();
-    }
+    loadPokemons();
 
     return () => {
       controller.abort();
     };
-  }, [pokemons]);
+  }, []);
 
   return (
     <PokemonsContext.Provider value={{ pokemons, isLoading }}>
