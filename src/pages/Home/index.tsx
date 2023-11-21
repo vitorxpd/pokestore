@@ -3,10 +3,18 @@ import { cn } from '../../utils/cn';
 
 import { Card } from './Card';
 import { FilterButton } from './FilterButton';
+import { PokemonModal } from './PokemonModal';
 import { useHomeController } from './useHomeController';
 
 export function Home() {
-  const { isLoading, pokemons } = useHomeController();
+  const {
+    isLoading,
+    pokemons,
+    currentPokemon,
+    modalIsOpen,
+    openModal,
+    closeModal,
+  } = useHomeController();
 
   return (
     <main className="max-w-[1440px] mx-auto my-0 pt-[72px] desktop:pt-11 pb-[30px] desktop:pb-20 px-4 flex flex-col items-center relative">
@@ -28,11 +36,20 @@ export function Home() {
             price={pokemon.price}
             sprite={pokemon.sprite}
             types={pokemon.types}
+            onOpenModal={openModal}
           />
         ))}
       </ul>
 
       {isLoading && <Spinner className="desktop:w-12 desktop:h-12 mt-6" />}
+
+      {currentPokemon && (
+        <PokemonModal
+          currentPokemon={currentPokemon}
+          open={modalIsOpen}
+          onClose={closeModal}
+        />
+      )}
     </main>
   );
 }

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 import {
   PokemonsResponse,
@@ -11,9 +11,21 @@ import { getPokemonPrice } from '../../utils/getPokemonPrice';
 import { pokemonColors } from '../../utils/pokemonColors';
 
 export function useHomeController() {
-  const [pokemonData, setPokemonData] = useState({} as PokemonsResponse);
+  const [pokemonData, setPokemonData] = useState<null | PokemonsResponse>(null);
   const [pokemons, setPokemons] = useState<Pokemon[]>([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [currentPokemon, setCurrentPokemon] = useState<null | Pokemon>(null);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+
+  const openModal = useCallback((pokemon: Pokemon) => {
+    setCurrentPokemon(pokemon);
+    setModalIsOpen(true);
+  }, []);
+
+  const closeModal = useCallback(() => {
+    setCurrentPokemon(null);
+    setModalIsOpen(false);
+  }, []);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -44,7 +56,7 @@ export function useHomeController() {
 
       if (scrollPosition >= documentHeight) {
         try {
-          const url = new URL(pokemonData.next);
+          const url = new URL(pokemonData!.next);
           const limit = Number(url.searchParams.get('limit'));
           const offset = Number(url.searchParams.get('offset'));
 
@@ -118,5 +130,9 @@ export function useHomeController() {
   return {
     pokemons,
     isLoading,
+    currentPokemon,
+    modalIsOpen,
+    openModal,
+    closeModal,
   };
 }

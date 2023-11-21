@@ -4,7 +4,34 @@ import { Pokemon } from '../../types/pokemon';
 import { cn } from '../../utils/cn';
 import { priceFormatter } from '../../utils/priceFormatter';
 
-export function Card({ id, name, price, sprite, types }: Pokemon) {
+interface CardProps extends Pokemon {
+  onOpenModal: (pokemon: Pokemon) => void;
+}
+
+export function Card({
+  id,
+  name,
+  price,
+  sprite,
+  types,
+  base_experience,
+  height,
+  weight,
+  onOpenModal,
+}: CardProps) {
+  function handleOpenModal() {
+    onOpenModal({
+      base_experience,
+      height,
+      id,
+      name,
+      price,
+      sprite,
+      types,
+      weight,
+    });
+  }
+
   return (
     <li className="w-[180px] desktop:w-[275px] pt-3 pb-4 px-[22px] flex flex-col items-center shadow-[1px_2px_4px_0_rgba(0,0,0,0.40)] rounded-[30px]">
       <div
@@ -15,7 +42,7 @@ export function Card({ id, name, price, sprite, types }: Pokemon) {
       >
         <img
           src={sprite || pokeball}
-          alt="Pokéball"
+          alt={name}
           className="w-[92px] h-[92px] desktop:w-[142px] desktop:h-[142px]"
         />
       </div>
@@ -56,6 +83,7 @@ export function Card({ id, name, price, sprite, types }: Pokemon) {
           'w-full h-7 desktop:h-11 mt-4 desktop:mt-6 px-3 py-1 flex justify-center items-center gap-1 desktop:gap-3',
           'bg-red-primary rounded-[30px]',
         )}
+        onClick={handleOpenModal}
       >
         <img
           src={cartIcon}
