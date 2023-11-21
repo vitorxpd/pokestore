@@ -5,8 +5,8 @@ import magnifierIcon from '../../assets/icons/magnifier.svg';
 import logo from '../../assets/images/pokestore.svg';
 import { cn } from '../../utils/cn';
 
-import { LineDecoration } from './LineDecoration';
-import { SearchInput } from './SearchInput';
+import { LineDecoration } from './components/LineDecoration';
+import { SearchInput } from './components/SearchInput';
 
 export function Header() {
   return (
