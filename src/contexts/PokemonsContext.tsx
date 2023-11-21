@@ -1,32 +1,27 @@
-import { ReactNode, createContext, useEffect, useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
 
 import { getPokemon } from '../services/pokemons';
-
-interface PokemonsContextProps {
-  isLoading: boolean;
-}
-
-export const PokemonsContext = createContext({} as PokemonsContextProps);
 
 interface Pokemon {
   id: string;
 }
 
-interface PokemonProviderProps {
-  children: ReactNode;
+interface PokemonsContextProps {
+  pokemons: Pokemon[];
+  isLoading: boolean;
 }
 
-export function PokemonsContextProvider({ children }: PokemonProviderProps) {
+export const PokemonsContext = createContext({} as PokemonsContextProps);
+
+export function PokemonsProvider({ children }: { children: React.ReactNode }) {
   const [pokemons, setPokemons] = useState<Pokemon[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-
-  const limit = 151;
 
   useEffect(() => {
     const controller = new AbortController();
 
     async function loadPokemons() {
-      Array.from({ length: limit }).map(async (_, index) => {
+      Array.from({ length: 151 }).map(async (_, index) => {
         try {
           const id = index + 1;
           const { pokemon } = await getPokemon(id, controller.signal);
@@ -50,7 +45,7 @@ export function PokemonsContextProvider({ children }: PokemonProviderProps) {
   }, [pokemons]);
 
   return (
-    <PokemonsContext.Provider value={{ isLoading }}>
+    <PokemonsContext.Provider value={{ pokemons, isLoading }}>
       {children}
     </PokemonsContext.Provider>
   );

@@ -1,11 +1,11 @@
-import { PokemonsContextProvider } from './contexts/PokemonsContext';
+import { PokemonsProvider } from './contexts/PokemonsContext';
 import { Router } from './Router';
 import './assets/styles/globals.css';
 
 export function App() {
   return (
-    <PokemonsContextProvider>
+    <PokemonsProvider>
       <Router />
-    </PokemonsContextProvider>
+    </PokemonsProvider>
   );
 }
