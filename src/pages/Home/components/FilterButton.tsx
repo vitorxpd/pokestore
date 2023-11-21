@@ -1,5 +1,5 @@
-import filterIcon from '../../assets/icons/filter.svg';
-import { cn } from '../../utils/cn';
+import filterIcon from '../../../assets/icons/filter.svg';
+import { cn } from '../../../utils/cn';
 
 interface FilterProps {
   className: string;

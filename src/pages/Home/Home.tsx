@@ -2,8 +2,8 @@ import { useEffect, useRef, useState } from 'react';
 
 import { cn } from '../../utils/cn';
 
-import { Card } from './Card';
-import { FilterButton } from './FilterButton';
+import { Card } from './components/Card';
+import { FilterButton } from './components/FilterButton';
 
 export function Home() {
   const [filterIsFixed, setFilterIsFixed] = useState(false);
