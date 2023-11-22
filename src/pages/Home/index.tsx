@@ -17,7 +17,7 @@ export function Home() {
   } = useHomeController();
 
   return (
-    <main className="max-w-[1440px] mx-auto my-0 pt-[72px] desktop:pt-11 pb-[30px] desktop:pb-20 px-4 flex flex-col items-center relative">
+    <main className="max-w-[1440px] mx-auto pt-[72px] desktop:pt-11 pb-[30px] desktop:pb-20 px-4 flex flex-col items-center relative">
       <FilterButton
         className={cn(
           'absolute top-2 desktop:top-11 right-[14px] desktop:right-[-18px]',
