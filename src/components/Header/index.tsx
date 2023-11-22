@@ -1,12 +1,11 @@
 import { Link } from 'react-router-dom';
 
 import cartIcon from '../../assets/icons/cart.svg';
-import magnifierIcon from '../../assets/icons/magnifier.svg';
 import logo from '../../assets/pokestore.svg';
 import { cn } from '../../utils/cn';
 
-import { LineDecoration } from './components/LineDecoration';
-import { SearchInput } from './components/SearchInput';
+import { LineDecoration } from './LineDecoration';
+import { SearchForm } from './SearchForm';
 
 export function Header() {
   return (
@@ -49,15 +48,7 @@ export function Header() {
           </button>
         </div>
 
-        <div className="relative">
-          <SearchInput />
-
-          <img
-            src={magnifierIcon}
-            alt="Search"
-            className="desktop:w-[30px] desktop:h-[30px] absolute top-[6px] right-3"
-          />
-        </div>
+        <SearchForm />
       </div>
 
       <LineDecoration />
