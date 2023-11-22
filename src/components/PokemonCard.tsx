@@ -1,14 +1,14 @@
-import cartIcon from '../../assets/icons/cart.svg';
-import pokeball from '../../assets/pokeball.svg';
-import { Pokemon } from '../../types/pokemon';
-import { cn } from '../../utils/cn';
-import { priceFormatter } from '../../utils/priceFormatter';
+import cartIcon from '../assets/icons/cart.svg';
+import pokeball from '../assets/pokeball.svg';
+import { Pokemon } from '../types/pokemon';
+import { cn } from '../utils/cn';
+import { priceFormatter } from '../utils/priceFormatter';
 
 interface CardProps extends Pokemon {
   onOpenModal: (pokemon: Pokemon) => void;
 }
 
-export function Card({
+export function PokemonCard({
   id,
   name,
   price,

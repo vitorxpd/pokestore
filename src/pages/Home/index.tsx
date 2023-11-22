@@ -1,9 +1,9 @@
+import { PokemonCard } from '../../components/PokemonCard';
+import { PokemonModal } from '../../components/PokemonModal';
 import { Spinner } from '../../components/Spinner';
 import { cn } from '../../utils/cn';
 
-import { Card } from './Card';
 import { FilterButton } from './FilterButton';
-import { PokemonModal } from './PokemonModal';
 import { useHomeController } from './useHomeController';
 
 export function Home() {
@@ -26,7 +26,7 @@ export function Home() {
 
       <ul className="grid grid-cols-[repeat(2,calc(180px+24px))] desktop:grid-cols-[repeat(4,calc(275px+37px))] gap-[14px] desktop:gap-[38px]">
         {pokemons.map((pokemon) => (
-          <Card
+          <PokemonCard
             key={pokemon.id}
             id={pokemon.id}
             name={pokemon.name}
@@ -45,7 +45,7 @@ export function Home() {
 
       {currentPokemon && (
         <PokemonModal
-          currentPokemon={currentPokemon}
+          pokemon={currentPokemon}
           open={modalIsOpen}
           onClose={closeModal}
         />

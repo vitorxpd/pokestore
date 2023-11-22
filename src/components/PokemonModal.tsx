@@ -1,21 +1,17 @@
-import cartIcon from '../../assets/icons/cart.svg';
-import pokeball from '../../assets/pokeball.svg';
-import { Modal } from '../../components/Modal';
-import { Pokemon } from '../../types/pokemon';
-import { cn } from '../../utils/cn';
-import { priceFormatter } from '../../utils/priceFormatter';
+import cartIcon from '../assets/icons/cart.svg';
+import pokeball from '../assets/pokeball.svg';
+import { Modal } from '../components/Modal';
+import { Pokemon } from '../types/pokemon';
+import { cn } from '../utils/cn';
+import { priceFormatter } from '../utils/priceFormatter';
 
 interface PokemonModalProps {
-  currentPokemon: Pokemon;
+  pokemon: Pokemon;
   open: boolean;
   onClose: () => void;
 }
 
-export function PokemonModal({
-  currentPokemon,
-  open,
-  onClose,
-}: PokemonModalProps) {
+export function PokemonModal({ pokemon, open, onClose }: PokemonModalProps) {
   return (
     <Modal open={open}>
       <div
@@ -33,8 +29,8 @@ export function PokemonModal({
 
         <div className="flex justify-center">
           <img
-            src={currentPokemon.sprite || pokeball}
-            alt={currentPokemon.name}
+            src={pokemon.sprite || pokeball}
+            alt={pokemon.name}
             className="w-[200px] desktop:w-[272px] h-[200px] desktop:h-[272px]"
           />
         </div>
@@ -42,15 +38,15 @@ export function PokemonModal({
         <div className="flex-1">
           <div className="mt-5 flex flex-col items-center desktop:items-start">
             <span className="text-[20px] desktop:text-[30px]">
-              {currentPokemon.name}
+              {pokemon.name}
             </span>
 
             <span className="hidden desktop:block opacity-60">
-              {priceFormatter(currentPokemon.price)}
+              {priceFormatter(pokemon.price)}
             </span>
 
             <div className="flex gap-1 desktop:gap-2 desktop:mt-[14px]">
-              {currentPokemon.types.map((type) => (
+              {pokemon.types.map((type) => (
                 <span
                   key={type.name}
                   className={cn(
@@ -72,22 +68,22 @@ export function PokemonModal({
           <div className="mt-8">
             <div>
               <span className="opacity-60">key: </span>
-              <span>#{currentPokemon.id}</span>
+              <span>#{pokemon.id}</span>
             </div>
 
             <div>
               <span className="opacity-60">base_experience: </span>
-              <span>{currentPokemon.base_experience}exp</span>
+              <span>{pokemon.base_experience}exp</span>
             </div>
 
             <div>
               <span className="opacity-60">height: </span>
-              <span>{currentPokemon.height}m</span>
+              <span>{pokemon.height}m</span>
             </div>
 
             <div>
               <span className="opacity-60">weight: </span>
-              <span>{currentPokemon.weight}kg</span>
+              <span>{pokemon.weight}kg</span>
             </div>
           </div>
 
