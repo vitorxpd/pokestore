@@ -28,14 +28,7 @@ export function Home() {
         {pokemons.map((pokemon) => (
           <PokemonCard
             key={pokemon.id}
-            id={pokemon.id}
-            name={pokemon.name}
-            base_experience={pokemon.base_experience}
-            height={pokemon.height}
-            weight={pokemon.weight}
-            price={pokemon.price}
-            sprite={pokemon.sprite}
-            types={pokemon.types}
+            pokemon={pokemon}
             onOpenModal={openModal}
           />
         ))}

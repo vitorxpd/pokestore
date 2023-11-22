@@ -4,21 +4,15 @@ import { Pokemon } from '../types/pokemon';
 import { cn } from '../utils/cn';
 import { priceFormatter } from '../utils/priceFormatter';
 
-interface CardProps extends Pokemon {
+interface CardProps {
+  pokemon: Pokemon;
   onOpenModal: (pokemon: Pokemon) => void;
 }
 
-export function PokemonCard({
-  id,
-  name,
-  price,
-  sprite,
-  types,
-  base_experience,
-  height,
-  weight,
-  onOpenModal,
-}: CardProps) {
+export function PokemonCard({ pokemon, onOpenModal }: CardProps) {
+  const { base_experience, height, id, name, price, sprite, types, weight } =
+    pokemon;
+
   function handleOpenModal() {
     onOpenModal({
       base_experience,
