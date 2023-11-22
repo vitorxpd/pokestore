@@ -11,7 +11,7 @@ export function Router() {
     <Routes>
       <Route element={<DefaultLayout />}>
         <Route path="/" element={<Home />} />
-        <Route path="/pokemon/:key" element={<Pokemon />} />
+        <Route path="/pokemon/:id" element={<Pokemon />} />
         <Route path="/checkout" element={<Checkout />} />
         <Route path="*" element={<NotFound />} />
       </Route>

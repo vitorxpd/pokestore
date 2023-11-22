@@ -8,7 +8,7 @@ import { getPokemonPrice } from '../../utils/getPokemonPrice';
 import { pokemonColors } from '../../utils/pokemonColors';
 
 interface PokemonParams {
-  key: string;
+  id: string;
 }
 
 export function usePokemonController() {
@@ -16,7 +16,7 @@ export function usePokemonController() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
-  const { key } = useParams<Partial<PokemonParams>>();
+  const { id: paramId } = useParams<Partial<PokemonParams>>();
 
   function handleOpenModal() {
     setModalIsOpen(true);
@@ -46,7 +46,7 @@ export function usePokemonController() {
             types,
             weight,
           },
-        } = await pokemonsService.getPokemon(key ?? '', controller.signal);
+        } = await pokemonsService.getPokemon(paramId ?? '', controller.signal);
 
         const { price } = await getPokemonPrice(name);
 
@@ -81,13 +81,13 @@ export function usePokemonController() {
     return () => {
       controller.abort();
     };
-  }, [key]);
+  }, [paramId]);
 
   return {
     currentPokemon,
     modalIsOpen,
     isLoading,
-    key,
+    paramId,
     handleOpenModal,
     handleCloseModal,
   };

@@ -13,7 +13,7 @@ export function Pokemon() {
     currentPokemon,
     modalIsOpen,
     isLoading,
-    key,
+    paramId,
     handleOpenModal,
     handleCloseModal,
   } = usePokemonController();
@@ -39,7 +39,7 @@ export function Pokemon() {
       {!isLoading && !currentPokemon && (
         <div>
           <p className="text-xs desktop:text-3xl opacity-80">
-            results for {key}
+            results for {paramId}
           </p>
 
           <div className="w-[174px] desktop:w-[286px] h-56 desktop:h-[348px] mt-[70px] desktop:mt-[102px] mx-auto relative">
