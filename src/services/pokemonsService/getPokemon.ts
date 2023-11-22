@@ -21,8 +21,10 @@ export interface PokemonResponse {
   };
 }
 
-export async function getPokemon(name: string) {
-  const { data } = await httpClient.get<PokemonResponse>(`/pokemon/${name}`);
+export async function getPokemon(name: string, signal?: AbortSignal) {
+  const { data } = await httpClient.get<PokemonResponse>(`/pokemon/${name}`, {
+    signal,
+  });
 
   return { pokemon: data };
 }

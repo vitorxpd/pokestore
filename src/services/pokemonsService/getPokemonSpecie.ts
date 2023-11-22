@@ -8,9 +8,10 @@ export interface PokemonSpecieResponse {
   is_mythical: boolean;
 }
 
-export async function getPokemonSpecie(name: string) {
+export async function getPokemonSpecie(name: string, signal?: AbortSignal) {
   const { data } = await httpClient.get<PokemonSpecieResponse>(
     `/pokemon-species/${name}`,
+    { signal },
   );
 
   return { pokemon: data };
