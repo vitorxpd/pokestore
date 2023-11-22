@@ -4,7 +4,7 @@ import { Header } from '../components/Header';
 
 export function DefaultLayout() {
   return (
-    <div>
+    <div className="layout">
       <Header />
       <Outlet />
     </div>
