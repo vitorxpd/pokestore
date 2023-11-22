@@ -12,8 +12,8 @@ export function Home() {
     pokemons,
     currentPokemon,
     modalIsOpen,
-    openModal,
-    closeModal,
+    handleOpenModal,
+    handleCloseModal,
   } = useHomeController();
 
   return (
@@ -29,7 +29,7 @@ export function Home() {
           <PokemonCard
             key={pokemon.id}
             pokemon={pokemon}
-            onOpenModal={openModal}
+            onOpenModal={handleOpenModal}
           />
         ))}
       </ul>
@@ -40,7 +40,7 @@ export function Home() {
         <PokemonModal
           pokemon={currentPokemon}
           open={modalIsOpen}
-          onClose={closeModal}
+          onClose={handleCloseModal}
         />
       )}
     </main>

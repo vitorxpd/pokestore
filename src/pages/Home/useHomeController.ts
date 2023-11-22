@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import {
   PokemonsResponse,
@@ -17,15 +17,15 @@ export function useHomeController() {
   const [currentPokemon, setCurrentPokemon] = useState<null | Pokemon>(null);
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
-  const openModal = useCallback((pokemon: Pokemon) => {
+  function handleOpenModal(pokemon: Pokemon) {
     setCurrentPokemon(pokemon);
     setModalIsOpen(true);
-  }, []);
+  }
 
-  const closeModal = useCallback(() => {
+  function handleCloseModal() {
     setCurrentPokemon(null);
     setModalIsOpen(false);
-  }, []);
+  }
 
   useEffect(() => {
     const controller = new AbortController();
@@ -132,7 +132,7 @@ export function useHomeController() {
     isLoading,
     currentPokemon,
     modalIsOpen,
-    openModal,
-    closeModal,
+    handleOpenModal,
+    handleCloseModal,
   };
 }
