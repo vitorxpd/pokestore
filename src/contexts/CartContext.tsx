@@ -1,4 +1,5 @@
 import { ReactNode, createContext, useCallback, useState } from 'react';
+import toast from 'react-hot-toast';
 
 interface CartItems {
   id: number;
@@ -22,6 +23,10 @@ export function CartProvider({ children }: { children: ReactNode }) {
 
       if (!hasItem) {
         setCartItems((prevState) => [...prevState, { id, name }]);
+      } else {
+        toast('Você já adicionou este produto!', {
+          className: 'text-[10px] desktop:text-sm text-center',
+        });
       }
     },
     [cartItems],
