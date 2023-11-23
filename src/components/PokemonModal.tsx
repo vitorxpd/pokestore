@@ -1,6 +1,7 @@
 import cartIcon from '../assets/icons/cart.svg';
 import pokeball from '../assets/pokeball.svg';
 import { Modal } from '../components/Modal';
+import { useCart } from '../hooks/useCart';
 import { Pokemon } from '../types/pokemon';
 import { cn } from '../utils/cn';
 import { priceFormatter } from '../utils/priceFormatter';
@@ -12,6 +13,15 @@ interface PokemonModalProps {
 }
 
 export function PokemonModal({ pokemon, open, onClose }: PokemonModalProps) {
+  const { base_experience, height, id, name, price, sprite, types, weight } =
+    pokemon;
+
+  const { addCartItem } = useCart();
+
+  function handleAddCartItem() {
+    addCartItem(id, name);
+  }
+
   return (
     <Modal open={open}>
       <div
@@ -29,24 +39,22 @@ export function PokemonModal({ pokemon, open, onClose }: PokemonModalProps) {
 
         <div className="flex justify-center">
           <img
-            src={pokemon.sprite || pokeball}
-            alt={pokemon.name}
+            src={sprite || pokeball}
+            alt={name}
             className="w-[200px] desktop:w-[272px] h-[200px] desktop:h-[272px]"
           />
         </div>
 
         <div className="flex-1">
           <div className="mt-5 flex flex-col items-center desktop:items-start">
-            <span className="text-[20px] desktop:text-[30px]">
-              {pokemon.name}
-            </span>
+            <span className="text-[20px] desktop:text-[30px]">{name}</span>
 
             <span className="hidden desktop:block opacity-60">
-              {priceFormatter(pokemon.price)}
+              {priceFormatter(price)}
             </span>
 
             <div className="flex gap-1 desktop:gap-2 desktop:mt-[14px]">
-              {pokemon.types.map((type) => (
+              {types.map((type) => (
                 <span
                   key={type.name}
                   className={cn(
@@ -68,27 +76,30 @@ export function PokemonModal({ pokemon, open, onClose }: PokemonModalProps) {
           <div className="mt-8">
             <div>
               <span className="opacity-60">key: </span>
-              <span>#{pokemon.id}</span>
+              <span>#{id}</span>
             </div>
 
             <div>
               <span className="opacity-60">base_experience: </span>
-              <span>{pokemon.base_experience}exp</span>
+              <span>{base_experience}exp</span>
             </div>
 
             <div>
               <span className="opacity-60">height: </span>
-              <span>{pokemon.height}m</span>
+              <span>{height}m</span>
             </div>
 
             <div>
               <span className="opacity-60">weight: </span>
-              <span>{pokemon.weight}kg</span>
+              <span>{weight}kg</span>
             </div>
           </div>
 
           <div className="mt-7 desktop:mt-9 flex justify-center desktop:justify-end ">
-            <button className="w-[210px] h-11 flex items-center justify-center gap-[10px] bg-red-primary rounded-[30px]">
+            <button
+              className="w-[210px] h-11 flex items-center justify-center gap-[10px] bg-red-primary rounded-[30px]"
+              onClick={handleAddCartItem}
+            >
               <img src={cartIcon} alt="Cart" className="w-[30px] h-[30px]" />
               <span className="text-xs text-white">add to cart</span>
             </button>
