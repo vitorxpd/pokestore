@@ -8,6 +8,7 @@ interface CartItems {
 
 interface CartContextProps {
   cartItems: CartItems[];
+  cartCount: number;
   addCartItem: (id: number, name: string) => void;
   removeCartItem: (id: number) => void;
 }
@@ -16,6 +17,8 @@ export const CartContext = createContext({} as CartContextProps);
 
 export function CartProvider({ children }: { children: ReactNode }) {
   const [cartItems, setCartItems] = useState<CartItems[]>([]);
+
+  const cartCount = cartItems.length;
 
   const addCartItem = useCallback(
     (id: number, name: string) => {
@@ -42,7 +45,14 @@ export function CartProvider({ children }: { children: ReactNode }) {
   );
 
   return (
-    <CartContext.Provider value={{ cartItems, addCartItem, removeCartItem }}>
+    <CartContext.Provider
+      value={{
+        cartItems,
+        cartCount,
+        addCartItem,
+        removeCartItem,
+      }}
+    >
       {children}
     </CartContext.Provider>
   );
