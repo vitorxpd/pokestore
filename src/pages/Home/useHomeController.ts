@@ -81,7 +81,7 @@ export function useHomeController() {
       setIsLoading(true);
       await delay();
 
-      pokemonData?.results?.forEach(async (singlePokemon) => {
+      pokemonData?.results.forEach(async (singlePokemon) => {
         try {
           const {
             pokemon: {
@@ -115,7 +115,10 @@ export function useHomeController() {
             weight,
           };
 
-          setPokemons((prevState) => [...prevState, newPokemon]);
+          setPokemons((prevState) => [
+            ...prevState.sort((a, b) => a.id - b.id),
+            newPokemon,
+          ]);
         } catch {
           //
         } finally {
