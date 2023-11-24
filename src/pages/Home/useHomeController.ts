@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useLayoutEffect, useState } from 'react';
 
 import {
   PokemonsResponse,
@@ -17,6 +17,17 @@ export function useHomeController() {
   const [currentPokemon, setCurrentPokemon] = useState<null | Pokemon>(null);
   const [pokemonModalIsOpen, setPokemonModalIsOpen] = useState(false);
   const [filterModalIsOpen, setFilterModalIsOpen] = useState(false);
+  const [filterType, setFilterType] = useState<null | string>(null);
+
+  const filteredPokemons = pokemons.filter((pokemon) => {
+    const pokemonType = pokemon.types.find((type) => type.name === filterType);
+
+    if (filterType) {
+      return pokemonType?.name === filterType;
+    } else {
+      return pokemons;
+    }
+  });
 
   function handleOpenPokemonModal(pokemon: Pokemon) {
     setCurrentPokemon(pokemon);
@@ -34,6 +45,10 @@ export function useHomeController() {
 
   function handleCloseFilterModal() {
     setFilterModalIsOpen(false);
+  }
+
+  function handleSetFilterType(type: null | string) {
+    setFilterType(type);
   }
 
   useEffect(() => {
@@ -85,7 +100,7 @@ export function useHomeController() {
     };
   }, [pokemonData]);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     async function loadPokemons() {
       setIsLoading(true);
       await delay();
@@ -140,14 +155,16 @@ export function useHomeController() {
   }, [pokemonData]);
 
   return {
-    pokemons,
     isLoading,
     currentPokemon,
     pokemonModalIsOpen,
     filterModalIsOpen,
+    filterType,
+    filteredPokemons,
     handleOpenPokemonModal,
     handleClosePokemonModal,
     handleOpenFilterModal,
     handleCloseFilterModal,
+    handleSetFilterType,
   };
 }

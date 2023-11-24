@@ -4,16 +4,18 @@ import { pokemonColors } from '../../utils/pokemonColors';
 
 interface FilterModalProps {
   open: boolean;
+  onFilterType: (type: null | string) => void;
   onClose: () => void;
 }
 
-export function FilterModal({ open, onClose }: FilterModalProps) {
+export function FilterModal({ open, onFilterType, onClose }: FilterModalProps) {
   function handleApplyFilter(type: string) {
-    console.log(type);
+    onFilterType(type);
     onClose();
   }
 
   function handleClearFilter() {
+    onFilterType(null);
     onClose();
   }
 
