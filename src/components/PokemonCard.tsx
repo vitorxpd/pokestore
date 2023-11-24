@@ -52,7 +52,7 @@ export function PokemonCard({ pokemon, onOpenModal }: CardProps) {
             key={type.name}
             className={cn(
               'w-14 desktop:w-[90px] h-[18px] desktop:h-7 px-[10px] desktop:px-4 py-1 desktop:py-2 flex justify-center items-center',
-              'border border-solid border-[#000] rounded-[30px]',
+              'border border-solid border-black rounded-[30px]',
               'shadow-[0_0_2px_3px_rgba(255,255,255,0.80)_inset]',
             )}
             style={{
