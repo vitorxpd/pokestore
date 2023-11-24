@@ -15,16 +15,25 @@ export function useHomeController() {
   const [pokemons, setPokemons] = useState<Pokemon[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [currentPokemon, setCurrentPokemon] = useState<null | Pokemon>(null);
-  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [pokemonModalIsOpen, setPokemonModalIsOpen] = useState(false);
+  const [filterModalIsOpen, setFilterModalIsOpen] = useState(false);
 
-  function handleOpenModal(pokemon: Pokemon) {
+  function handleOpenPokemonModal(pokemon: Pokemon) {
     setCurrentPokemon(pokemon);
-    setModalIsOpen(true);
+    setPokemonModalIsOpen(true);
   }
 
-  function handleCloseModal() {
+  function handleClosePokemonModal() {
     setCurrentPokemon(null);
-    setModalIsOpen(false);
+    setPokemonModalIsOpen(false);
+  }
+
+  function handleOpenFilterModal() {
+    setFilterModalIsOpen(true);
+  }
+
+  function handleCloseFilterModal() {
+    setFilterModalIsOpen(false);
   }
 
   useEffect(() => {
@@ -134,8 +143,11 @@ export function useHomeController() {
     pokemons,
     isLoading,
     currentPokemon,
-    modalIsOpen,
-    handleOpenModal,
-    handleCloseModal,
+    pokemonModalIsOpen,
+    filterModalIsOpen,
+    handleOpenPokemonModal,
+    handleClosePokemonModal,
+    handleOpenFilterModal,
+    handleCloseFilterModal,
   };
 }

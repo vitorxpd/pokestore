@@ -4,6 +4,7 @@ import { Spinner } from '../../components/Spinner';
 import { cn } from '../../utils/cn';
 
 import { FilterButton } from './FilterButton';
+import { FilterModal } from './FilterModal';
 import { useHomeController } from './useHomeController';
 
 export function Home() {
@@ -11,9 +12,12 @@ export function Home() {
     isLoading,
     pokemons,
     currentPokemon,
-    modalIsOpen,
-    handleOpenModal,
-    handleCloseModal,
+    pokemonModalIsOpen,
+    filterModalIsOpen,
+    handleOpenPokemonModal,
+    handleClosePokemonModal,
+    handleOpenFilterModal,
+    handleCloseFilterModal,
   } = useHomeController();
 
   return (
@@ -22,14 +26,17 @@ export function Home() {
         className={cn(
           'absolute top-2 desktop:top-11 right-[14px] desktop:right-[-18px]',
         )}
+        onClick={handleOpenFilterModal}
       />
+
+      <FilterModal open={filterModalIsOpen} onClose={handleCloseFilterModal} />
 
       <ul className="grid grid-cols-[repeat(2,calc(180px+24px))] desktop:grid-cols-[repeat(4,calc(275px+37px))] gap-[14px] desktop:gap-[38px]">
         {pokemons.map((pokemon) => (
           <PokemonCard
             key={pokemon.id}
             pokemon={pokemon}
-            onOpenModal={handleOpenModal}
+            onOpenModal={handleOpenPokemonModal}
           />
         ))}
       </ul>
@@ -39,8 +46,8 @@ export function Home() {
       {currentPokemon && (
         <PokemonModal
           pokemon={currentPokemon}
-          open={modalIsOpen}
-          onClose={handleCloseModal}
+          open={pokemonModalIsOpen}
+          onClose={handleClosePokemonModal}
         />
       )}
     </main>
