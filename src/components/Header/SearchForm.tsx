@@ -13,7 +13,7 @@ export function SearchForm() {
     event.preventDefault();
 
     const value = inputRef.current?.value;
-    navigate(`/pokemon/${value}`);
+    navigate(`/pokemon/${value?.toLowerCase()}`);
   }
 
   return (
