@@ -24,18 +24,6 @@ export function Pokemon() {
         <Spinner className="mx-auto desktop:w-12 desktop:h-12 mt-6" />
       )}
 
-      {!isLoading && currentPokemon && (
-        <div className="flex justify-center">
-          <PokemonCard pokemon={currentPokemon} onOpenModal={handleOpenModal} />
-
-          <PokemonModal
-            pokemon={currentPokemon}
-            open={modalIsOpen}
-            onClose={handleCloseModal}
-          />
-        </div>
-      )}
-
       {!isLoading && !currentPokemon && (
         <div>
           <p className="text-xs desktop:text-3xl opacity-80">
@@ -61,6 +49,18 @@ export function Pokemon() {
               return to the home
             </Link>
           </div>
+        </div>
+      )}
+
+      {!isLoading && currentPokemon && (
+        <div className="flex justify-center desktop:justify-start">
+          <PokemonCard pokemon={currentPokemon} onOpenModal={handleOpenModal} />
+
+          <PokemonModal
+            pokemon={currentPokemon}
+            open={modalIsOpen}
+            onClose={handleCloseModal}
+          />
         </div>
       )}
     </main>
