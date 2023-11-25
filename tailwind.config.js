@@ -12,18 +12,18 @@ export default {
         ...blackA,
       },
       keyframes: {
-        overlayShow: {
+        'overlay-show': {
           from: { opacity: 0 },
           to: { opacity: 1 },
         },
-        contentShow: {
+        'content-show': {
           from: { opacity: 0, transform: 'translate(-50%, -48%) scale(0.96)' },
           to: { opacity: 1, transform: 'translate(-50%, -50%) scale(1)' },
         },
       },
       animation: {
-        'overlay-show': 'overlayShow 150ms cubic-bezier(0.16, 1, 0.3, 1)',
-        'content-show': 'contentShow 150ms cubic-bezier(0.16, 1, 0.3, 1)',
+        'overlay-show': 'overlay-show 150ms cubic-bezier(0.16, 1, 0.3, 1)',
+        'content-show': 'content-show 150ms cubic-bezier(0.16, 1, 0.3, 1)',
       },
       fontFamily: {
         primary: ['"Press Start 2P"', 'sans-serif'],
