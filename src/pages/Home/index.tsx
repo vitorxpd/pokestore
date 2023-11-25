@@ -23,12 +23,18 @@ export function Home() {
   } = useHomeController();
 
   return (
-    <main className="max-w-[1440px] mx-auto pt-[72px] desktop:pt-20 pb-[30px] desktop:pb-20 px-4 flex flex-col items-center relative">
+    <main
+      className={cn(
+        'max-w-[1440px] mx-auto pb-[30px] desktop:pb-20 px-4',
+        'flex flex-col items-center relative',
+        filterType ? 'pt-7 desktop:pt-7' : 'pt-[72px] desktop:pt-20',
+      )}
+    >
       <button
         className={cn(
           'w-[50px] desktop:w-[76px] h-[50px] desktop:h-[76px] flex items-center justify-center',
           'border border-solid border-[#E0E0E0] rounded-full',
-          'absolute top-2 desktop:top-20 right-[68px] desktop:right-[-18px]',
+          'absolute top-2 desktop:top-11 right-[68px] desktop:right-[-18px]',
           'shadow-[0_4px_4px_0_rgba(0,0,0,0.25)]',
         )}
         onClick={handleOpenFilterModal}
@@ -41,7 +47,7 @@ export function Home() {
       </button>
 
       {filterType && (
-        <div className="w-[calc((180px+24px)*2)] desktop:w-[calc((275px+37px)*4)] mb-10">
+        <div className="w-[calc((180px+24px)*2)] desktop:w-[calc((275px+37px)*4)] mb-[74px] desktop:mb-6">
           <p className="text-[10px] desktop:text-2xl opacity-60">
             results for all {filterType} type pokemon
           </p>
