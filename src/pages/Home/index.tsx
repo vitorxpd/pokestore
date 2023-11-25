@@ -1,9 +1,9 @@
+import filterIcon from '../../assets/icons/filter.svg';
 import { PokemonCard } from '../../components/PokemonCard';
 import { PokemonModal } from '../../components/PokemonModal';
 import { Spinner } from '../../components/Spinner';
 import { cn } from '../../utils/cn';
 
-import { FilterButton } from './FilterButton';
 import { FilterModal } from './FilterModal';
 import { useHomeController } from './useHomeController';
 
@@ -24,12 +24,21 @@ export function Home() {
 
   return (
     <main className="max-w-[1440px] mx-auto pt-10 desktop:pt-20 pb-[30px] desktop:pb-20 px-4 flex flex-col items-center relative">
-      <FilterButton
+      <button
         className={cn(
+          'w-[50px] desktop:w-[76px] h-[50px] desktop:h-[76px] flex items-center justify-center',
+          'border border-solid border-[#E0E0E0] rounded-full',
           'absolute top-2 desktop:top-11 right-[14px] desktop:right-[-18px]',
+          'shadow-[0_4px_4px_0_rgba(0,0,0,0.25)]',
         )}
         onClick={handleOpenFilterModal}
-      />
+      >
+        <img
+          src={filterIcon}
+          alt="Filter"
+          className="desktop:w-[50px] desktop:h-[50px]"
+        />
+      </button>
 
       {filterType && (
         <div className="w-[calc((180px+24px)*2)] desktop:w-[calc((275px+37px)*4)] mb-10">
