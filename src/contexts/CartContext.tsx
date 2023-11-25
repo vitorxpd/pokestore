@@ -26,6 +26,9 @@ export function CartProvider({ children }: { children: ReactNode }) {
 
       if (!hasItem) {
         setCartItems((prevState) => [...prevState, { id, name }]);
+        toast(`${name} adicionado!`, {
+          className: 'text-[10px] desktop:text-sm text-center',
+        });
       } else {
         toast('Você já adicionou este Pokémon!', {
           className: 'text-[10px] desktop:text-sm text-center',

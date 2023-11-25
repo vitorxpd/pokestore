@@ -20,6 +20,7 @@ export function PokemonModal({ pokemon, open, onClose }: PokemonModalProps) {
 
   function handleAddCartItem() {
     addCartItem(id, name);
+    onClose();
   }
 
   return (
