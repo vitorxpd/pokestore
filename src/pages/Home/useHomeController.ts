@@ -75,6 +75,10 @@ export function useHomeController() {
 
   useEffect(() => {
     async function lazyLoading() {
+      if (filterType) {
+        return;
+      }
+
       const documentHeight = document.documentElement.scrollHeight;
       const scrollPosition = window.scrollY + window.innerHeight;
 
@@ -98,7 +102,7 @@ export function useHomeController() {
     return () => {
       window.removeEventListener('scroll', lazyLoading);
     };
-  }, [pokemonData]);
+  }, [pokemonData, filterType]);
 
   useLayoutEffect(() => {
     async function loadPokemons() {
