@@ -35,109 +35,109 @@ export function FilterModal({ open, onFilterType, onClose }: FilterModalProps) {
 
         <div className="mt-[26px] px-[20px] grid grid-cols-[repeat(2,1fr)] gap-[26px] overflow-y-auto">
           <FilterTrigger
-            element="grass"
+            type="grass"
             color={pokemonColors.grass}
             onClick={() => handleApplyFilter('grass')}
           />
 
           <FilterTrigger
-            element="normal"
+            type="normal"
             color={pokemonColors.normal}
             onClick={() => handleApplyFilter('normal')}
           />
 
           <FilterTrigger
-            element="fighting"
+            type="fighting"
             color={pokemonColors.fighting}
             onClick={() => handleApplyFilter('fighting')}
           />
 
           <FilterTrigger
-            element="flying"
+            type="flying"
             color={pokemonColors.flying}
             onClick={() => handleApplyFilter('flying')}
           />
 
           <FilterTrigger
-            element="poison"
+            type="poison"
             color={pokemonColors.poison}
             onClick={() => handleApplyFilter('poison')}
           />
 
           <FilterTrigger
-            element="ground"
+            type="ground"
             color={pokemonColors.ground}
             onClick={() => handleApplyFilter('ground')}
           />
 
           <FilterTrigger
-            element="rock"
+            type="rock"
             color={pokemonColors.rock}
             onClick={() => handleApplyFilter('rock')}
           />
 
           <FilterTrigger
-            element="bug"
+            type="bug"
             color={pokemonColors.bug}
             onClick={() => handleApplyFilter('bug')}
           />
 
           <FilterTrigger
-            element="ghost"
+            type="ghost"
             color={pokemonColors.ghost}
             onClick={() => handleApplyFilter('ghost')}
           />
 
           <FilterTrigger
-            element="steel"
+            type="steel"
             color={pokemonColors.steel}
             onClick={() => handleApplyFilter('steel')}
           />
 
           <FilterTrigger
-            element="fire"
+            type="fire"
             color={pokemonColors.fire}
             onClick={() => handleApplyFilter('fire')}
           />
 
           <FilterTrigger
-            element="water"
+            type="water"
             color={pokemonColors.water}
             onClick={() => handleApplyFilter('water')}
           />
 
           <FilterTrigger
-            element="electric"
+            type="electric"
             color={pokemonColors.electric}
             onClick={() => handleApplyFilter('electric')}
           />
 
           <FilterTrigger
-            element="psychic"
+            type="psychic"
             color={pokemonColors.psychic}
             onClick={() => handleApplyFilter('psychic')}
           />
 
           <FilterTrigger
-            element="ice"
+            type="ice"
             color={pokemonColors.ice}
             onClick={() => handleApplyFilter('ice')}
           />
 
           <FilterTrigger
-            element="dragon"
+            type="dragon"
             color={pokemonColors.dragon}
             onClick={() => handleApplyFilter('dragon')}
           />
 
           <FilterTrigger
-            element="dark"
+            type="dark"
             color={pokemonColors.dark}
             onClick={() => handleApplyFilter('dark')}
           />
 
           <FilterTrigger
-            element="fairy"
+            type="fairy"
             color={pokemonColors.fairy}
             onClick={() => handleApplyFilter('fairy')}
           />
@@ -157,12 +157,12 @@ export function FilterModal({ open, onFilterType, onClose }: FilterModalProps) {
 }
 
 interface FilterTriggerProps {
-  element: string;
+  type: string;
   color: string;
   onClick: () => void;
 }
 
-const FilterTrigger = ({ element, color, onClick }: FilterTriggerProps) => {
+const FilterTrigger = ({ type, color, onClick }: FilterTriggerProps) => {
   return (
     <button
       className={cn(
@@ -173,7 +173,7 @@ const FilterTrigger = ({ element, color, onClick }: FilterTriggerProps) => {
       style={{ backgroundColor: color }}
       onClick={onClick}
     >
-      <span className="text-base text-white uppercase">{element}</span>
+      <span className="text-base text-white uppercase">{type}</span>
     </button>
   );
 };
