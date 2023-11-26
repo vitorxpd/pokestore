@@ -19,7 +19,7 @@ export function PokemonModal({ pokemon, open, onClose }: PokemonModalProps) {
   const { addCartItem } = useCart();
 
   function handleAddCartItem() {
-    addCartItem(id, name);
+    addCartItem(pokemon);
     onClose();
   }
 

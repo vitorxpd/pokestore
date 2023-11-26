@@ -1,33 +1,35 @@
-import { ReactNode, createContext, useCallback, useState } from 'react';
+import {
+  ReactNode,
+  createContext,
+  useCallback,
+  useEffect,
+  useState,
+} from 'react';
 
+import { Pokemon } from '../types/pokemon';
 import { feedback } from '../utils/feedback';
 
-interface CartItems {
-  id: number;
-  name: string;
-}
-
 interface CartContextProps {
-  cartItems: CartItems[];
+  cartItems: Pokemon[];
   cartCount: number;
-  addCartItem: (id: number, name: string) => void;
+  addCartItem: (pokemon: Pokemon) => void;
   removeCartItem: (id: number) => void;
 }
 
 export const CartContext = createContext({} as CartContextProps);
 
 export function CartProvider({ children }: { children: ReactNode }) {
-  const [cartItems, setCartItems] = useState<CartItems[]>([]);
+  const [cartItems, setCartItems] = useState<Pokemon[]>([]);
 
   const cartCount = cartItems.length;
 
   const addCartItem = useCallback(
-    (id: number, name: string) => {
-      const hasItem = cartItems.find((item) => item.id === id);
+    (pokemon: Pokemon) => {
+      const hasItem = cartItems.find((item) => item.id === pokemon.id);
 
       if (!hasItem) {
-        setCartItems((prevState) => [...prevState, { id, name }]);
-        feedback(`${name} adicionado!`);
+        setCartItems((prevState) => [...prevState, pokemon]);
+        feedback(`${pokemon.name} adicionado!`);
       } else {
         feedback('você já adicionou este pokémon!');
       }
@@ -43,6 +45,8 @@ export function CartProvider({ children }: { children: ReactNode }) {
     },
     [cartItems],
   );
+
+  useEffect(() => {}, [cartItems]);
 
   return (
     <CartContext.Provider
