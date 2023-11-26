@@ -49,7 +49,7 @@ export function Home() {
       {filterType && (
         <div className="w-[calc((180px+24px)*2)] desktop:w-[calc((275px+37px)*4)] mb-[74px] desktop:mb-6">
           <p className="text-[10px] desktop:text-2xl opacity-60">
-            results for all {filterType} type pokemon
+            results for all {filterType} type pokémon
           </p>
 
           <p className="text-[8px] desktop:text-base opacity-40">

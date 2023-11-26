@@ -29,7 +29,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
         setCartItems((prevState) => [...prevState, { id, name }]);
         feedback(`${name} adicionado!`);
       } else {
-        feedback('Você já adicionou este Pokémon!');
+        feedback('você já adicionou este pokémon!');
       }
     },
     [cartItems],
