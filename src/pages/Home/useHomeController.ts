@@ -29,25 +29,25 @@ export function useHomeController() {
     }
   });
 
-  function handleOpenPokemonModal(pokemon: Pokemon) {
+  function openPokemonModal(pokemon: Pokemon) {
     setCurrentPokemon(pokemon);
     setPokemonModalIsOpen(true);
   }
 
-  function handleClosePokemonModal() {
+  function closePokemonModal() {
     setCurrentPokemon(null);
     setPokemonModalIsOpen(false);
   }
 
-  function handleOpenFilterModal() {
+  function openFilterModal() {
     setFilterModalIsOpen(true);
   }
 
-  function handleCloseFilterModal() {
+  function closeFilterModal() {
     setFilterModalIsOpen(false);
   }
 
-  function handleSetFilterType(type: null | string) {
+  function addFilterType(type: null | string) {
     setFilterType(type);
   }
 
@@ -165,10 +165,10 @@ export function useHomeController() {
     filterModalIsOpen,
     filterType,
     filteredPokemons,
-    handleOpenPokemonModal,
-    handleClosePokemonModal,
-    handleOpenFilterModal,
-    handleCloseFilterModal,
-    handleSetFilterType,
+    openPokemonModal,
+    closePokemonModal,
+    openFilterModal,
+    closeFilterModal,
+    addFilterType,
   };
 }

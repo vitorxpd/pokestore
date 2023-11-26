@@ -15,11 +15,11 @@ export function Home() {
     filterModalIsOpen,
     filterType,
     filteredPokemons,
-    handleOpenPokemonModal,
-    handleClosePokemonModal,
-    handleOpenFilterModal,
-    handleCloseFilterModal,
-    handleSetFilterType,
+    openPokemonModal,
+    closePokemonModal,
+    openFilterModal,
+    closeFilterModal,
+    addFilterType,
   } = useHomeController();
 
   return (
@@ -37,7 +37,7 @@ export function Home() {
           'absolute top-2 desktop:top-11 right-[68px] desktop:right-[-18px]',
           'shadow-[0_4px_4px_0_rgba(0,0,0,0.25)]',
         )}
-        onClick={handleOpenFilterModal}
+        onClick={openFilterModal}
       >
         <img
           src={filterIcon}
@@ -63,7 +63,7 @@ export function Home() {
           <PokemonCard
             key={pokemon.id}
             pokemon={pokemon}
-            onOpenModal={handleOpenPokemonModal}
+            onOpenModal={openPokemonModal}
           />
         ))}
       </ul>
@@ -74,14 +74,14 @@ export function Home() {
         <PokemonModal
           pokemon={currentPokemon}
           open={pokemonModalIsOpen}
-          onClose={handleClosePokemonModal}
+          onClose={closePokemonModal}
         />
       )}
 
       <FilterModal
         open={filterModalIsOpen}
-        onFilterType={handleSetFilterType}
-        onClose={handleCloseFilterModal}
+        onFilterType={addFilterType}
+        onClose={closeFilterModal}
       />
     </main>
   );
