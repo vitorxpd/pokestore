@@ -18,11 +18,11 @@ export function usePokemonController() {
 
   const { id: paramId } = useParams<Partial<PokemonParams>>();
 
-  function handleOpenModal() {
+  function openModal() {
     setModalIsOpen(true);
   }
 
-  function handleCloseModal() {
+  function closeModal() {
     setModalIsOpen(false);
   }
 
@@ -88,7 +88,7 @@ export function usePokemonController() {
     modalIsOpen,
     isLoading,
     paramId,
-    handleOpenModal,
-    handleCloseModal,
+    openModal,
+    closeModal,
   };
 }

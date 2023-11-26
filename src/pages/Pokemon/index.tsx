@@ -14,8 +14,8 @@ export function Pokemon() {
     modalIsOpen,
     isLoading,
     paramId,
-    handleOpenModal,
-    handleCloseModal,
+    openModal,
+    closeModal,
   } = usePokemonController();
 
   return (
@@ -54,12 +54,12 @@ export function Pokemon() {
 
       {!isLoading && currentPokemon && (
         <div className="flex justify-center desktop:justify-start">
-          <PokemonCard pokemon={currentPokemon} onOpenModal={handleOpenModal} />
+          <PokemonCard pokemon={currentPokemon} onOpenModal={openModal} />
 
           <PokemonModal
             pokemon={currentPokemon}
             open={modalIsOpen}
-            onClose={handleCloseModal}
+            onClose={closeModal}
           />
         </div>
       )}
