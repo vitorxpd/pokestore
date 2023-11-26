@@ -2,7 +2,7 @@ import { Toaster } from 'react-hot-toast';
 
 import { CartProvider } from './contexts/CartContext';
 import { Router } from './Router';
-import './styles/globals.css';
+import './index.css';
 
 export function App() {
   return (
