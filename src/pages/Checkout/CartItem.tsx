@@ -1,15 +1,27 @@
 import pokeball from '../../assets/pokeball.svg';
-import { Pokemon } from '../../types/pokemon';
+import { CartItem } from '../../contexts/CartContext';
+import { useCart } from '../../hooks/useCart';
 import { cn } from '../../utils/cn';
 import { priceFormatter } from '../../utils/priceFormatter';
 
-interface CartItemProps {
-  pokemon: Pokemon;
+export interface CartItemProps {
+  item: CartItem;
 }
 
-export function CartItem({ pokemon }: CartItemProps) {
-  const { base_experience, height, id, name, price, sprite, types, weight } =
-    pokemon;
+export function CartItem({ item }: CartItemProps) {
+  const {
+    base_experience,
+    height,
+    id,
+    name,
+    priceDefinition,
+    quantity,
+    sprite,
+    types,
+    weight,
+  } = item;
+
+  const { changeItemQuantity } = useCart();
 
   return (
     <li
@@ -78,12 +90,15 @@ export function CartItem({ pokemon }: CartItemProps) {
 
         <div className="flex items-center gap-5 desktop:gap-[38px]">
           <div className="w-[110px] desktop:w-auto flex">
-            <button className="w-5 desktop:w-[30px] h-5 desktop:h-[30px] flex justify-center items-center bg-red-primary">
+            <button
+              className="w-5 desktop:w-[30px] h-5 desktop:h-[30px] flex justify-center items-center bg-red-primary"
+              onClick={() => changeItemQuantity(id, 'decrement')}
+            >
               <span className="text-white text-[10px]">-</span>
             </button>
 
             <input
-              value={12}
+              value={quantity}
               className={cn(
                 'w-6 desktop:w-[34px] h-5 desktop:h-[30px]',
                 'text-[10px] text-center text-black p-0',
@@ -92,7 +107,10 @@ export function CartItem({ pokemon }: CartItemProps) {
               disabled
             />
 
-            <button className="w-5 desktop:w-[30px] h-5 desktop:h-[30px] flex justify-center items-center bg-red-primary">
+            <button
+              className="w-5 desktop:w-[30px] h-5 desktop:h-[30px] flex justify-center items-center bg-red-primary"
+              onClick={() => changeItemQuantity(id, 'increment')}
+            >
               <span className="text-white text-[10px]">+</span>
             </button>
           </div>
@@ -103,7 +121,7 @@ export function CartItem({ pokemon }: CartItemProps) {
             </span>
 
             <span className="text-[8px] desktop:text-[10px]">
-              {priceFormatter(price)}
+              {priceFormatter(priceDefinition.total)}
             </span>
           </div>
         </div>

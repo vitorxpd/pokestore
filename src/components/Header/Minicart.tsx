@@ -7,7 +7,7 @@ import { cn } from '../../utils/cn';
 export function Minicart() {
   const navigate = useNavigate();
 
-  const { cartCount } = useCart();
+  const { hasCartItems, totalizers } = useCart();
 
   function handleCheckoutNavigate() {
     navigate('/checkout');
@@ -17,7 +17,7 @@ export function Minicart() {
     <button className="relative" onClick={handleCheckoutNavigate}>
       <img src={cartIcon} alt="Cart" className="desktop:w-14 desktop:h-14" />
 
-      {cartCount > 0 && (
+      {hasCartItems && (
         <div
           className={cn(
             'w-6 h-[22px] bg-[#FFE031] flex justify-center items-center rounded-full',
@@ -25,7 +25,7 @@ export function Minicart() {
             'drop-shadow-[0_4px_4px_rgba(0,0,0,0.25)]',
           )}
         >
-          <span className="text-xs text-[#3564AF]">{cartCount}</span>
+          <span className="text-xs text-[#3564AF]">{totalizers.quantity}</span>
         </div>
       )}
     </button>

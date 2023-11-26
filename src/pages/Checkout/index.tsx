@@ -2,15 +2,19 @@ import pokeballs from '../../assets/pokeballs.svg';
 import { useCart } from '../../hooks/useCart';
 import { cn } from '../../utils/cn';
 
+import { BuyModal } from './BuyModal';
 import { CartItem } from './CartItem';
 import { Summary } from './Summary';
+import { useCheckoutController } from './useCheckoutController';
 
 export function Checkout() {
-  const { cartItems, cartCount } = useCart();
+  const { buyModalIsOpen, openBuyModal, reset } = useCheckoutController();
+
+  const { cartItems, hasCartItems } = useCart();
 
   return (
     <main className="pt-[34px] pb-[18px] px-3 flex flex-col desktop:flex-row desktop:justify-center gap-7 desktop:gap-10">
-      {cartCount === 0 && (
+      {!hasCartItems && (
         <div
           className={cn(
             'desktop:w-[870px] pt-[14px] desktop:pt-5 pb-5 desktop:pb-9 px-7 desktop:px-10',
@@ -33,7 +37,7 @@ export function Checkout() {
         </div>
       )}
 
-      {cartCount > 0 && (
+      {hasCartItems && (
         <div
           className={cn(
             'pt-[14px] desktop:pt-5 px-7 desktop:px-10',
@@ -44,13 +48,15 @@ export function Checkout() {
 
           <ul className="mt-2">
             {cartItems.map((item) => (
-              <CartItem key={item.id} pokemon={item} />
+              <CartItem key={item.id} item={item} />
             ))}
           </ul>
         </div>
       )}
 
-      <Summary />
+      <Summary onOpenBuyModal={openBuyModal} />
+
+      <BuyModal isOpen={buyModalIsOpen} onReset={reset} />
     </main>
   );
 }

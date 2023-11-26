@@ -1,9 +1,14 @@
 import cartIcon from '../../assets/icons/cart.svg';
 import { useCart } from '../../hooks/useCart';
 import { cn } from '../../utils/cn';
+import { priceFormatter } from '../../utils/priceFormatter';
 
-export function Summary() {
-  const { cartCount } = useCart();
+interface SummaryProps {
+  onOpenBuyModal: () => void;
+}
+
+export function Summary({ onOpenBuyModal }: SummaryProps) {
+  const { hasCartItems, totalizers, clearCart } = useCart();
 
   return (
     <div
@@ -21,13 +26,15 @@ export function Summary() {
           </span>
 
           <span className="text-xs desktop:text-base opacity-80">
-            x pokemon
+            {totalizers.quantity} pokemon
           </span>
         </div>
 
         <div className="flex gap-1">
           <span className="text-xs opacity-60">total:</span>
-          <span className="text-xs opacity-80">R$ 1000</span>
+          <span className="text-xs opacity-80">
+            {priceFormatter(totalizers.value)}
+          </span>
         </div>
       </div>
 
@@ -36,8 +43,10 @@ export function Summary() {
           className={cn(
             'w-[288px] desktop:w[316px] h-8 desktop:h-10 flex justify-center items-center',
             'bg-white border-[3px] border-solid border-red-primary rounded-[30px]',
-            cartCount === 0 && 'opacity-50',
+            'disabled:opacity-50 disabled:cursor-not-allowed',
           )}
+          onClick={clearCart}
+          disabled={!hasCartItems}
         >
           <span className="text-[10px] desktop:text-xs text-red-primary uppercase">
             remove all pokemons
@@ -48,8 +57,10 @@ export function Summary() {
           className={cn(
             'w-[288px] desktop:w[316px] h-8 desktop:h-10 flex justify-center items-center gap-8 desktop:gap-10',
             'bg-red-primary border-[3px] border-solid border-red-primary rounded-[30px]',
-            cartCount === 0 && 'opacity-50',
+            'disabled:opacity-50 disabled:cursor-not-allowed',
           )}
+          onClick={onOpenBuyModal}
+          disabled={!hasCartItems}
         >
           <img
             src={cartIcon}
