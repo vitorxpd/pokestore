@@ -15,13 +15,13 @@ export function Minicart() {
 
   return (
     <button className="relative" onClick={handleCheckoutNavigate}>
-      <img src={cartIcon} alt="Cart" className="desktop:w-14 desktop:h-14" />
+      <img src={cartIcon} alt="Cart" className="desktop:h-14 desktop:w-14" />
 
       {hasCartItems && (
         <div
           className={cn(
-            'w-6 h-[22px] bg-[#FFE031] flex justify-center items-center rounded-full',
-            'absolute bottom-[28px] desktop:bottom-10 left-[30px] desktop:left-10',
+            'flex h-[22px] w-6 items-center justify-center rounded-full bg-[#FFE031]',
+            'absolute bottom-[28px] left-[30px] desktop:bottom-10 desktop:left-10',
             'drop-shadow-[0_4px_4px_rgba(0,0,0,0.25)]',
           )}
         >

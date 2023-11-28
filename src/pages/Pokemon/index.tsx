@@ -19,33 +19,33 @@ export function Pokemon() {
   } = usePokemonController();
 
   return (
-    <main className="max-w-[1440px] mx-auto px-11 py-9">
+    <main className="mx-auto max-w-[1440px] px-11 py-9">
       {isLoading && (
-        <Spinner className="mx-auto desktop:w-12 desktop:h-12 mt-6" />
+        <Spinner className="mx-auto mt-6 desktop:h-12 desktop:w-12" />
       )}
 
       {!isLoading && !currentPokemon && (
         <div>
-          <p className="text-xs desktop:text-3xl opacity-80">
+          <p className="text-xs opacity-80 desktop:text-3xl">
             results for {paramId}
           </p>
 
-          <div className="w-[174px] desktop:w-[286px] h-56 desktop:h-[348px] mt-[70px] desktop:mt-[102px] mx-auto relative">
+          <div className="relative mx-auto mt-[70px] h-56 w-[174px] desktop:mt-[102px] desktop:h-[348px] desktop:w-[286px]">
             <img src={dragonite} alt="Dragonite" className="w-full" />
 
             <img
               src={questionIcon}
               alt="Question"
-              className="desktop:w-[72px] desktop:h-[76px] absolute left-11 bottom-16 desktop:left-[78px] desktop:bottom-[98px]"
+              className="absolute bottom-16 left-11 desktop:bottom-[98px] desktop:left-[78px] desktop:h-[76px] desktop:w-[72px]"
             />
           </div>
 
-          <div className="mt-[38px] desktop:mt-8 flex flex-col items-center gap-3">
-            <p className="text-[10px] desktop:text-sm text-center opacity-60">
+          <div className="mt-[38px] flex flex-col items-center gap-3 desktop:mt-8">
+            <p className="text-center text-[10px] opacity-60 desktop:text-sm">
               the pokédex doesn&apos;t have any info about this pokémon :(
             </p>
 
-            <Link to="/" className="text-[10px] desktop:text-sm opacity-40">
+            <Link to="/" className="text-[10px] opacity-40 desktop:text-sm">
               return to the home
             </Link>
           </div>

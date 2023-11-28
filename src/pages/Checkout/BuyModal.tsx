@@ -36,21 +36,21 @@ export function BuyModal({ isOpen, onReset }: BuyModalProps) {
     <Modal open={isOpen}>
       <div
         className={cn(
-          'w-[360px] desktop:w-[818px] px-11 desktop:px-[70px] py-8 desktop:py-[50px]',
-          'flex flex-col items-center gap-[50px] desktop:gap-[40px] bg-white rounded-[30px]',
+          'w-[360px] px-11 py-8 desktop:w-[818px] desktop:px-[70px] desktop:py-[50px]',
+          'flex flex-col items-center gap-[50px] rounded-[30px] bg-white desktop:gap-[40px]',
         )}
       >
-        <p className="text-sm desktop:text-2xl text-center opacity-60">
+        <p className="text-center text-sm opacity-60 desktop:text-2xl">
           thanks for your preference!
         </p>
 
         <img
           src={pikachu}
           alt="Pikachu"
-          className="w-[184px] desktop:w-[222px] h-[184px] desktop:h-[222px]"
+          className="h-[184px] w-[184px] desktop:h-[222px] desktop:w-[222px]"
         />
 
-        <p className="text-xs desktop:text-[18px] whitespace-nowrap opacity-60">
+        <p className="whitespace-nowrap text-xs opacity-60 desktop:text-[18px]">
           returning to home in {count}
         </p>
       </div>

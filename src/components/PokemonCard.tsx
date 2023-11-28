@@ -27,9 +27,9 @@ export function PokemonCard({ pokemon, onOpenModal }: CardProps) {
   }
 
   return (
-    <li className="w-[180px] desktop:w-[275px] pt-3 pb-4 px-[22px] flex flex-col items-center shadow-[1px_2px_4px_0_rgba(0,0,0,0.40)] rounded-[30px]">
+    <li className="flex w-[180px] flex-col items-center rounded-[30px] px-[22px] pb-4 pt-3 shadow-[1px_2px_4px_0_rgba(0,0,0,0.40)] desktop:w-[275px]">
       <div
-        className="w-[92px] desktop:w-[142px] h-[92px] desktop:h-[142px] rounded-full"
+        className="h-[92px] w-[92px] rounded-full desktop:h-[142px] desktop:w-[142px]"
         style={{
           backgroundColor: types[0].color,
         }}
@@ -37,29 +37,29 @@ export function PokemonCard({ pokemon, onOpenModal }: CardProps) {
         <img
           src={sprite || pokeball}
           alt={name}
-          className="w-[92px] h-[92px] desktop:w-[142px] desktop:h-[142px]"
+          className="h-[92px] w-[92px] desktop:h-[142px] desktop:w-[142px]"
         />
       </div>
 
-      <div className="mt-[10px] desktop:mt-4 flex gap-2 desktop:gap-3">
+      <div className="mt-[10px] flex gap-2 desktop:mt-4 desktop:gap-3">
         <span className="text-[10px] desktop:text-sm">{name}</span>
-        <span className="text-[10px] desktop:text-sm opacity-60">#{id}</span>
+        <span className="text-[10px] opacity-60 desktop:text-sm">#{id}</span>
       </div>
 
-      <div className="mt-[10px] desktop:mt-[14px] flex gap-1">
+      <div className="mt-[10px] flex gap-1 desktop:mt-[14px]">
         {types.map((type) => (
           <div
             key={type.name}
             className={cn(
-              'w-14 desktop:w-[90px] h-[18px] desktop:h-7 px-[10px] desktop:px-4 py-1 desktop:py-2 flex justify-center items-center',
-              'border border-solid border-black rounded-[30px]',
+              'flex h-[18px] w-14 items-center justify-center px-[10px] py-1 desktop:h-7 desktop:w-[90px] desktop:px-4 desktop:py-2',
+              'rounded-[30px] border border-solid border-black',
               'shadow-[0_0_2px_3px_rgba(255,255,255,0.80)_inset]',
             )}
             style={{
               backgroundColor: type.color,
             }}
           >
-            <span className="text-[6px] desktop:text-[10px] text-white uppercase">
+            <span className="text-[6px] uppercase text-white desktop:text-[10px]">
               {type.name}
             </span>
           </div>
@@ -67,24 +67,24 @@ export function PokemonCard({ pokemon, onOpenModal }: CardProps) {
       </div>
 
       <div className="mt-[10px] desktop:mt-4">
-        <span className="text-[10px] desktop:text-sm opacity-60">
+        <span className="text-[10px] opacity-60 desktop:text-sm">
           {priceFormatter(price)}
         </span>
       </div>
 
       <button
         className={cn(
-          'w-full h-7 desktop:h-11 mt-4 desktop:mt-6 px-3 py-1 flex justify-center items-center gap-1 desktop:gap-3',
-          'bg-red-primary rounded-[30px]',
+          'mt-4 flex h-7 w-full items-center justify-center gap-1 px-3 py-1 desktop:mt-6 desktop:h-11 desktop:gap-3',
+          'rounded-[30px] bg-red-primary',
         )}
         onClick={handleOpenModal}
       >
         <img
           src={cartIcon}
           alt="Cart"
-          className="w-5 desktop:w-[30px] h-5 desktop:h-[30px]"
+          className="h-5 w-5 desktop:h-[30px] desktop:w-[30px]"
         />
-        <span className="text-[8px] desktop:text-xs text-white">
+        <span className="text-[8px] text-white desktop:text-xs">
           add to cart
         </span>
       </button>

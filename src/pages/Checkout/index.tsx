@@ -13,25 +13,25 @@ export function Checkout() {
   const { cartItems, hasCartItems } = useCart();
 
   return (
-    <main className="pt-[34px] pb-[18px] px-3 flex flex-col desktop:flex-row desktop:justify-center gap-7 desktop:gap-10">
+    <main className="flex flex-col gap-7 px-3 pb-[18px] pt-[34px] desktop:flex-row desktop:justify-center desktop:gap-10">
       {!hasCartItems && (
         <div
           className={cn(
-            'desktop:w-[870px] pt-[14px] desktop:pt-5 pb-5 desktop:pb-9 px-7 desktop:px-10',
-            'bg-white rounded-[30px] shadow-[1px_2px_4px_0_rgba(0,0,0,0.4)]',
+            'px-7 pb-5 pt-[14px] desktop:w-[870px] desktop:px-10 desktop:pb-9 desktop:pt-5',
+            'rounded-[30px] bg-white shadow-[1px_2px_4px_0_rgba(0,0,0,0.4)]',
           )}
         >
-          <strong className="text-[18px] desktop:text-2xl block">cart</strong>
+          <strong className="block text-[18px] desktop:text-2xl">cart</strong>
           <img
             src={pokeballs}
             alt="Pokéballs"
-            className="desktop:w-[332px] h-[112px] mx-auto"
+            className="mx-auto h-[112px] desktop:w-[332px]"
           />
 
-          <p className="mt-6 text-[10px] desktop:text-base text-center opacity-60">
+          <p className="mt-6 text-center text-[10px] opacity-60 desktop:text-base">
             there is no pokémon here..
           </p>
-          <p className="text-[10px] desktop:text-base text-center opacity-60">
+          <p className="text-center text-[10px] opacity-60 desktop:text-base">
             Gotta catch&apos;em all!
           </p>
         </div>
@@ -40,11 +40,11 @@ export function Checkout() {
       {hasCartItems && (
         <div
           className={cn(
-            'pt-[14px] desktop:pt-5 px-7 desktop:px-10',
-            'bg-white rounded-[30px] shadow-[1px_2px_4px_0_rgba(0,0,0,0.4)]',
+            'px-7 pt-[14px] desktop:px-10 desktop:pt-5',
+            'rounded-[30px] bg-white shadow-[1px_2px_4px_0_rgba(0,0,0,0.4)]',
           )}
         >
-          <strong className="text-[18px] desktop:text-2xl block">cart</strong>
+          <strong className="block text-[18px] desktop:text-2xl">cart</strong>
 
           <ul className="mt-2">
             {cartItems.map((item) => (

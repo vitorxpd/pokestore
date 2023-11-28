@@ -23,9 +23,9 @@ export function SearchForm() {
         name="name"
         placeholder="search for your pokémon here"
         className={cn(
-          'w-full desktop:w-[416px] h-9 desktop:h-[42px] py-3 pl-4 desktop:pl-5 pr-[52px] desktop:pr-15',
-          'text-[10px] desktop:text-xs placeholder:text-[10px] desktop:placeholder:text-xs placeholder:text-[#B0B0B0]',
-          'border border-solid border-[#E0E0E0] rounded-[30px] outline-none',
+          'desktop:pr-15 h-9 w-full py-3 pl-4 pr-[52px] desktop:h-[42px] desktop:w-[416px] desktop:pl-5',
+          'text-[10px] placeholder:text-[10px] placeholder:text-[#B0B0B0] desktop:text-xs desktop:placeholder:text-xs',
+          'rounded-[30px] border border-solid border-[#E0E0E0] outline-none',
         )}
         required
       />
@@ -34,7 +34,7 @@ export function SearchForm() {
         <img
           src={magnifierIcon}
           alt="Search"
-          className="desktop:w-[30px] desktop:h-[30px] absolute top-[6px] right-3"
+          className="absolute right-3 top-[6px] desktop:h-[30px] desktop:w-[30px]"
         />
       </button>
     </form>

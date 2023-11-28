@@ -21,10 +21,10 @@ export function FilterModal({ open, onFilterType, onClose }: FilterModalProps) {
 
   return (
     <Modal open={open}>
-      <div className="w-screen h-screen py-[30px] desktop:w-[512px] desktop:h-auto flex flex-col items-center bg-white relative desktop:rounded-[30px]">
+      <div className="relative flex h-screen w-screen flex-col items-center bg-white py-[30px] desktop:h-auto desktop:w-[512px] desktop:rounded-[30px]">
         <button
           onClick={onClose}
-          className="flex items-center justify-center absolute top-6 right-5"
+          className="absolute right-5 top-6 flex items-center justify-center"
         >
           <span className="text-2xl opacity-60">X</span>
         </button>
@@ -33,7 +33,7 @@ export function FilterModal({ open, onFilterType, onClose }: FilterModalProps) {
           <span className="text-[24px]">Pokemon Types</span>
         </div>
 
-        <div className="mt-[26px] px-[20px] grid grid-cols-[repeat(2,1fr)] gap-[26px] overflow-y-auto">
+        <div className="mt-[26px] grid grid-cols-[repeat(2,1fr)] gap-[26px] overflow-y-auto px-[20px]">
           <FilterTrigger
             type="grass"
             color={pokemonColors.grass}
@@ -166,14 +166,16 @@ const FilterTrigger = ({ type, color, onClick }: FilterTriggerProps) => {
   return (
     <button
       className={cn(
-        'w-[148px] h-[50px] flex justify-center items-center rounded-[30px]',
+        'flex h-[50px] w-[148px] items-center justify-center rounded-[30px]',
         'border border-solid border-black',
         'shadow-[0_0_2px_3px_rgba(255,255,255,0.80)_inset]',
       )}
-      style={{ backgroundColor: color }}
+      style={{
+        backgroundColor: color,
+      }}
       onClick={onClick}
     >
-      <span className="text-base text-white uppercase">{type}</span>
+      <span className="text-base uppercase text-white">{type}</span>
     </button>
   );
 };

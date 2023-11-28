@@ -13,19 +13,19 @@ export function Summary({ onOpenBuyModal }: SummaryProps) {
   return (
     <div
       className={cn(
-        'desktop:w-[410px] pt-[14px] desktop:pt-5 pb-5 desktop:pb-9 px-7 desktop:px-10',
-        'bg-white rounded-[30px] shadow-[1px_2px_4px_0_rgba(0,0,0,0.4)]',
+        'px-7 pb-5 pt-[14px] desktop:w-[410px] desktop:px-10 desktop:pb-9 desktop:pt-5',
+        'rounded-[30px] bg-white shadow-[1px_2px_4px_0_rgba(0,0,0,0.4)]',
       )}
     >
-      <strong className="text-[18px] desktop:text-2xl block">summary</strong>
+      <strong className="block text-[18px] desktop:text-2xl">summary</strong>
 
-      <div className="w-[340px] mt-[30px] desktop:mt-9 mx-auto flex flex-col gap-2">
+      <div className="mx-auto mt-[30px] flex w-[340px] flex-col gap-2 desktop:mt-9">
         <div className="flex gap-1">
-          <span className="text-xs desktop:text-base opacity-60">
+          <span className="text-xs opacity-60 desktop:text-base">
             quantity:
           </span>
 
-          <span className="text-xs desktop:text-base opacity-80">
+          <span className="text-xs opacity-80 desktop:text-base">
             {totalizers.quantity} pokemon
           </span>
         </div>
@@ -38,26 +38,26 @@ export function Summary({ onOpenBuyModal }: SummaryProps) {
         </div>
       </div>
 
-      <div className="mt-[14px] desktop:mt-9 flex flex-col items-center gap-[10px] desktop:gap-3">
+      <div className="mt-[14px] flex flex-col items-center gap-[10px] desktop:mt-9 desktop:gap-3">
         <button
           className={cn(
-            'w-[288px] desktop:w[316px] h-8 desktop:h-10 flex justify-center items-center',
-            'bg-white border-[3px] border-solid border-red-primary rounded-[30px]',
-            'disabled:opacity-50 disabled:cursor-not-allowed',
+            'desktop:w[316px] flex h-8 w-[288px] items-center justify-center desktop:h-10',
+            'rounded-[30px] border-[3px] border-solid border-red-primary bg-white',
+            'disabled:cursor-not-allowed disabled:opacity-50',
           )}
           onClick={clearCart}
           disabled={!hasCartItems}
         >
-          <span className="text-[10px] desktop:text-xs text-red-primary uppercase">
+          <span className="text-[10px] uppercase text-red-primary desktop:text-xs">
             remove all pokemons
           </span>
         </button>
 
         <button
           className={cn(
-            'w-[288px] desktop:w[316px] h-8 desktop:h-10 flex justify-center items-center gap-8 desktop:gap-10',
-            'bg-red-primary border-[3px] border-solid border-red-primary rounded-[30px]',
-            'disabled:opacity-50 disabled:cursor-not-allowed',
+            'desktop:w[316px] flex h-8 w-[288px] items-center justify-center gap-8 desktop:h-10 desktop:gap-10',
+            'rounded-[30px] border-[3px] border-solid border-red-primary bg-red-primary',
+            'disabled:cursor-not-allowed disabled:opacity-50',
           )}
           onClick={onOpenBuyModal}
           disabled={!hasCartItems}
@@ -65,9 +65,9 @@ export function Summary({ onOpenBuyModal }: SummaryProps) {
           <img
             src={cartIcon}
             alt="Cart"
-            className="w-6 desktop:w-[30px] h-6 desktop:h-[30px]"
+            className="h-6 w-6 desktop:h-[30px] desktop:w-[30px]"
           />
-          <span className="text-[10px] desktop:text-xs text-white uppercase">
+          <span className="text-[10px] uppercase text-white desktop:text-xs">
             buy
           </span>
         </button>

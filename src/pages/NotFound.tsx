@@ -8,17 +8,17 @@ export function NotFound() {
       <img
         src={snorlax}
         alt="Snorlax"
-        className="mx-auto my-0 desktop:w-[400px] desktop:h-[374px]"
+        className="mx-auto my-0 desktop:h-[374px] desktop:w-[400px]"
       />
 
-      <div className="mt-6 desktop:mt-[26px] flex flex-col items-center gap-1">
-        <p className="text-xs desktop:text-base opacity-60">
+      <div className="mt-6 flex flex-col items-center gap-1 desktop:mt-[26px]">
+        <p className="text-xs opacity-60 desktop:text-base">
           error 404: page not found :(
         </p>
 
         <Link
           to="/"
-          className="text-xs desktop:text-base underline opacity-40 block"
+          className="block text-xs underline opacity-40 desktop:text-base"
         >
           go to home
         </Link>

@@ -27,13 +27,13 @@ export function PokemonModal({ pokemon, open, onClose }: PokemonModalProps) {
     <Modal open={open}>
       <div
         className={cn(
-          'w-[400px] desktop:w-[818px] pt-12 pb-8 px-10 flex flex-col desktop:flex-row desktop:gap-[30px]',
-          'bg-white rounded-[30px] relative',
+          'flex w-[400px] flex-col px-10 pb-8 pt-12 desktop:w-[818px] desktop:flex-row desktop:gap-[30px]',
+          'relative rounded-[30px] bg-white',
         )}
       >
         <button
           onClick={onClose}
-          className="flex items-center justify-center absolute top-6 right-5"
+          className="absolute right-5 top-6 flex items-center justify-center"
         >
           <span className="text-2xl opacity-60">X</span>
         </button>
@@ -42,7 +42,7 @@ export function PokemonModal({ pokemon, open, onClose }: PokemonModalProps) {
           <img
             src={sprite || pokeball}
             alt={name}
-            className="w-[200px] desktop:w-[272px] h-[200px] desktop:h-[272px]"
+            className="h-[200px] w-[200px] desktop:h-[272px] desktop:w-[272px]"
           />
         </div>
 
@@ -50,18 +50,18 @@ export function PokemonModal({ pokemon, open, onClose }: PokemonModalProps) {
           <div className="mt-5 flex flex-col items-center desktop:items-start">
             <span className="text-[20px] desktop:text-[30px]">{name}</span>
 
-            <span className="hidden desktop:block opacity-60">
+            <span className="hidden opacity-60 desktop:block">
               {priceFormatter(price)}
             </span>
 
-            <div className="flex gap-1 desktop:gap-2 desktop:mt-[14px]">
+            <div className="flex gap-1 desktop:mt-[14px] desktop:gap-2">
               {types.map((type) => (
                 <span
                   key={type.name}
                   className={cn(
-                    'w-[88px] desktop:w-[98px] h-6 desktop:h-7 flex justify-center items-center',
-                    'text-[10px] desktop:text-xs text-white uppercase',
-                    'border border-solid border-[#000] rounded-[30px]',
+                    'flex h-6 w-[88px] items-center justify-center desktop:h-7 desktop:w-[98px]',
+                    'text-[10px] uppercase text-white desktop:text-xs',
+                    'rounded-[30px] border border-solid border-[#000]',
                     'shadow-[0_0_2px_3px_rgba(255,255,255,0.80)_inset]',
                   )}
                   style={{
@@ -96,12 +96,12 @@ export function PokemonModal({ pokemon, open, onClose }: PokemonModalProps) {
             </div>
           </div>
 
-          <div className="mt-7 desktop:mt-9 flex justify-center desktop:justify-end ">
+          <div className="mt-7 flex justify-center desktop:mt-9 desktop:justify-end ">
             <button
-              className="w-[210px] h-11 flex items-center justify-center gap-[10px] bg-red-primary rounded-[30px]"
+              className="flex h-11 w-[210px] items-center justify-center gap-[10px] rounded-[30px] bg-red-primary"
               onClick={handleAddCartItem}
             >
-              <img src={cartIcon} alt="Cart" className="w-[30px] h-[30px]" />
+              <img src={cartIcon} alt="Cart" className="h-[30px] w-[30px]" />
               <span className="text-xs text-white">add to cart</span>
             </button>
           </div>
