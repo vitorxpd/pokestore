@@ -32,8 +32,8 @@ export function CartItem({ item }: CartItemProps) {
     >
       <img src={sprite || pokeball} alt={name} className="h-[98px] w-[98px]" />
 
-      <div className="flex flex-col gap-10 desktop:flex-row desktop:gap-[38px]">
-        <div className="flex items-center gap-5 desktop:gap-[38px]">
+      <div className="flex flex-col gap-10 desktop:flex-row desktop:gap-5">
+        <div className="flex flex-wrap items-center gap-5 desktop:gap-5">
           <div className="flex w-[110px] flex-col desktop:w-[182px] desktop:gap-2">
             <span className="text-[10px] desktop:text-base">{name}</span>
 
@@ -56,14 +56,14 @@ export function CartItem({ item }: CartItemProps) {
           </div>
 
           <div className="flex flex-col gap-1 desktop:w-[230px]">
-            <div className="flex">
+            <div className="flex flex-wrap">
               <span className="text-[6px] opacity-60 desktop:text-[10px]">
                 key:{' '}
               </span>
               <span className="text-[6px] desktop:text-[10px]">#{id}</span>
             </div>
 
-            <div className="flex">
+            <div className="flex flex-wrap">
               <span className="text-[6px] opacity-60 desktop:text-[10px]">
                 base_experience:{' '}
               </span>
@@ -72,14 +72,14 @@ export function CartItem({ item }: CartItemProps) {
               </span>
             </div>
 
-            <div className="flex">
+            <div className="flex flex-wrap">
               <span className="text-[6px] opacity-60 desktop:text-[10px]">
                 height:{' '}
               </span>
               <span className="text-[6px] desktop:text-[10px]">{height}m</span>
             </div>
 
-            <div className="flex">
+            <div className="flex flex-wrap">
               <span className="text-[6px] opacity-60 desktop:text-[10px]">
                 weight:{' '}
               </span>
@@ -88,7 +88,7 @@ export function CartItem({ item }: CartItemProps) {
           </div>
         </div>
 
-        <div className="flex items-center gap-5 desktop:gap-[38px]">
+        <div className="flex flex-wrap items-center gap-5 desktop:gap-[38px]">
           <div className="flex w-[110px] desktop:w-auto">
             <button
               className="flex h-5 w-5 items-center justify-center bg-red-primary desktop:h-[30px] desktop:w-[30px]"
@@ -115,7 +115,7 @@ export function CartItem({ item }: CartItemProps) {
             </button>
           </div>
 
-          <div className="flex gap-2">
+          <div className="flex flex-wrap gap-2">
             <span className="text-[8px] opacity-60 desktop:text-[10px]">
               price:{' '}
             </span>
