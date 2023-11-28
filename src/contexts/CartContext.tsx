@@ -127,8 +127,6 @@ export function CartProvider({ children }: { children: ReactNode }) {
     });
   }, [cartItems]);
 
-  console.log(cartItems);
-  console.log(totalizers);
   return (
     <CartContext.Provider
       value={{
