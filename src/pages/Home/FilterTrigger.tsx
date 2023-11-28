@@ -10,7 +10,7 @@ export function FilterTrigger({ onOpenFilterModal }: FilterTriggerProps) {
     <div
       className={cn(
         'mb-[10px] flex w-[calc((180px+24px)*2)] justify-end',
-        'z-10 w-[calc((275px+37px+38px+38px)*4)] desktop:absolute',
+        'desktop:absolute desktop:z-10 desktop:w-[calc((275px+37px+38px+38px)*4)]',
       )}
     >
       <button
