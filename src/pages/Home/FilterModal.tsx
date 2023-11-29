@@ -1,181 +1,144 @@
-import { Modal } from '../../components/Modal';
+import { useEffect, useState } from 'react';
+
 import { cn } from '../../utils/cn';
-import { pokemonColors } from '../../utils/pokemonColors';
 
 interface FilterModalProps {
   open: boolean;
-  onFilterType: (type: null | string) => void;
+  currentFilter: null | string;
   onClose: () => void;
+  onAddCurrentFilter: (filter: null | string) => void;
 }
 
-export function FilterModal({ open, onFilterType, onClose }: FilterModalProps) {
-  function handleApplyFilter(type: string) {
-    onFilterType(type);
-    onClose();
+export function FilterModal({
+  open,
+  currentFilter,
+  onClose,
+  onAddCurrentFilter,
+}: FilterModalProps) {
+  const [closeTransition, setCloseTransition] = useState(false);
+
+  const filters = {
+    orderBy: ['name', 'key', 'base_experience', 'height', 'weight'],
+    types: [
+      'grass',
+      'fighting',
+      'poison',
+      'rock',
+      'ghost',
+      'fire',
+      'electric',
+      'ice',
+      'dark',
+      'normal',
+      'flying',
+      'ground',
+      'bug',
+      'steel',
+      'water',
+      'psychic',
+      'dragon',
+      'fairy',
+    ],
+  };
+
+  function handleCloseModal() {
+    setCloseTransition(true);
+
+    setTimeout(() => {
+      setCloseTransition(false);
+      onClose();
+    }, 200);
   }
 
-  function handleClearFilter() {
-    onFilterType(null);
-    onClose();
+  function handleApplyFilter(filter: null | string) {
+    onAddCurrentFilter(filter);
+    handleCloseModal();
   }
+
+  useEffect(() => {
+    open
+      ? document.body.classList.add('no-scroll')
+      : document.body.classList.remove('no-scroll');
+  }, [open]);
 
   return (
-    <Modal open={open}>
-      <div className="relative flex h-screen w-screen flex-col items-center bg-white py-[30px] desktop:h-auto desktop:w-[512px] desktop:rounded-[30px]">
-        <button
-          onClick={onClose}
-          className="absolute right-5 top-6 flex items-center justify-center"
-        >
-          <span className="text-2xl opacity-60">X</span>
-        </button>
+    <div
+      className={cn(
+        'fixed left-0 top-0 z-50 h-full w-full',
+        open ? 'block' : 'hidden',
+      )}
+    >
+      <div className="h-full w-full bg-black/70" onClick={handleCloseModal} />
 
-        <div>
-          <span className="text-[24px]">Pokemon Types</span>
-        </div>
-
-        <div className="mt-[26px] grid grid-cols-[repeat(2,1fr)] gap-[26px] overflow-y-auto px-[20px]">
-          <FilterTrigger
-            type="grass"
-            color={pokemonColors.grass}
-            onClick={() => handleApplyFilter('grass')}
-          />
-
-          <FilterTrigger
-            type="normal"
-            color={pokemonColors.normal}
-            onClick={() => handleApplyFilter('normal')}
-          />
-
-          <FilterTrigger
-            type="fighting"
-            color={pokemonColors.fighting}
-            onClick={() => handleApplyFilter('fighting')}
-          />
-
-          <FilterTrigger
-            type="flying"
-            color={pokemonColors.flying}
-            onClick={() => handleApplyFilter('flying')}
-          />
-
-          <FilterTrigger
-            type="poison"
-            color={pokemonColors.poison}
-            onClick={() => handleApplyFilter('poison')}
-          />
-
-          <FilterTrigger
-            type="ground"
-            color={pokemonColors.ground}
-            onClick={() => handleApplyFilter('ground')}
-          />
-
-          <FilterTrigger
-            type="rock"
-            color={pokemonColors.rock}
-            onClick={() => handleApplyFilter('rock')}
-          />
-
-          <FilterTrigger
-            type="bug"
-            color={pokemonColors.bug}
-            onClick={() => handleApplyFilter('bug')}
-          />
-
-          <FilterTrigger
-            type="ghost"
-            color={pokemonColors.ghost}
-            onClick={() => handleApplyFilter('ghost')}
-          />
-
-          <FilterTrigger
-            type="steel"
-            color={pokemonColors.steel}
-            onClick={() => handleApplyFilter('steel')}
-          />
-
-          <FilterTrigger
-            type="fire"
-            color={pokemonColors.fire}
-            onClick={() => handleApplyFilter('fire')}
-          />
-
-          <FilterTrigger
-            type="water"
-            color={pokemonColors.water}
-            onClick={() => handleApplyFilter('water')}
-          />
-
-          <FilterTrigger
-            type="electric"
-            color={pokemonColors.electric}
-            onClick={() => handleApplyFilter('electric')}
-          />
-
-          <FilterTrigger
-            type="psychic"
-            color={pokemonColors.psychic}
-            onClick={() => handleApplyFilter('psychic')}
-          />
-
-          <FilterTrigger
-            type="ice"
-            color={pokemonColors.ice}
-            onClick={() => handleApplyFilter('ice')}
-          />
-
-          <FilterTrigger
-            type="dragon"
-            color={pokemonColors.dragon}
-            onClick={() => handleApplyFilter('dragon')}
-          />
-
-          <FilterTrigger
-            type="dark"
-            color={pokemonColors.dark}
-            onClick={() => handleApplyFilter('dark')}
-          />
-
-          <FilterTrigger
-            type="fairy"
-            color={pokemonColors.fairy}
-            onClick={() => handleApplyFilter('fairy')}
-          />
-        </div>
-
-        <div className="mt-[26px] flex justify-center">
+      <div
+        className={cn(
+          'absolute right-0 top-0 overflow-auto',
+          'h-full w-[300px] bg-white p-4 desktop:w-[340px]',
+          open ? 'block animate-slide-in' : 'hidden',
+          closeTransition && 'animate-slide-out',
+        )}
+      >
+        <div className="flex justify-end">
           <button
-            className="text-base underline opacity-40"
-            onClick={handleClearFilter}
+            className="flex items-center justify-center"
+            onClick={handleCloseModal}
           >
-            limpar filtro
+            <span className="text-2xl opacity-60">X</span>
           </button>
         </div>
+
+        <div className="mt-6 flex flex-col items-end">
+          <div className="flex flex-col items-end gap-1">
+            <strong className="text-sm desktop:text-lg">filter by type</strong>
+
+            {currentFilter && (
+              <button
+                className="text-[8px] opacity-60 desktop:text-[10px]"
+                onClick={() => handleApplyFilter(null)}
+              >
+                clear filter: {currentFilter}
+              </button>
+            )}
+
+            {!currentFilter && (
+              <p className="text-[8px] opacity-60 desktop:text-[10px]">
+                no filter applied
+              </p>
+            )}
+          </div>
+
+          <ul className="mt-4">
+            {filters.types.map((type) => (
+              <TypeItem
+                key={type}
+                label={type}
+                action={() => handleApplyFilter(type)}
+              />
+            ))}
+          </ul>
+        </div>
       </div>
-    </Modal>
+    </div>
   );
 }
-
-interface FilterTriggerProps {
-  type: string;
-  color: string;
-  onClick: () => void;
+interface TypeItemProps {
+  className?: string;
+  label: string;
+  action: () => void;
 }
 
-const FilterTrigger = ({ type, color, onClick }: FilterTriggerProps) => {
+export const TypeItem = ({ className, label, action }: TypeItemProps) => {
   return (
-    <button
-      className={cn(
-        'flex h-[50px] w-[148px] items-center justify-center rounded-[30px]',
-        'border border-solid border-black',
-        'shadow-[0_0_2px_3px_rgba(255,255,255,0.80)_inset]',
-      )}
-      style={{
-        backgroundColor: color,
-      }}
-      onClick={onClick}
-    >
-      <span className="text-base uppercase text-white">{type}</span>
-    </button>
+    <li className="text-end">
+      <button
+        className={cn(
+          'text-sm text-red-primary underline desktop:text-lg',
+          className,
+        )}
+        onClick={action}
+      >
+        {label}
+      </button>
+    </li>
   );
 };

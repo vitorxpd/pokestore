@@ -13,13 +13,13 @@ export function Home() {
     currentPokemon,
     pokemonModalIsOpen,
     filterModalIsOpen,
-    filterType,
+    currentFilter,
     filteredPokemons,
     openPokemonModal,
     closePokemonModal,
     openFilterModal,
     closeFilterModal,
-    addFilterType,
+    addCurrentFilter,
   } = useHomeController();
 
   return (
@@ -29,10 +29,10 @@ export function Home() {
         'flex flex-col items-center',
       )}
     >
-      {filterType && (
+      {currentFilter && (
         <div className="mb-[10px] w-[calc((180px+24px)*2)] desktop:mb-6 desktop:w-[calc((275px+37px)*4)]">
           <p className="text-[10px] opacity-60 desktop:text-2xl">
-            results for all {filterType} type pokémon
+            results for all {currentFilter} type pokémon
           </p>
 
           <p className="text-[8px] opacity-40 desktop:text-base">
@@ -65,8 +65,9 @@ export function Home() {
 
       <FilterModal
         open={filterModalIsOpen}
-        onFilterType={addFilterType}
+        currentFilter={currentFilter}
         onClose={closeFilterModal}
+        onAddCurrentFilter={addCurrentFilter}
       />
     </main>
   );

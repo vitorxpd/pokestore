@@ -12,18 +12,28 @@ export default {
         ...blackA,
       },
       keyframes: {
-        'overlay-show': {
+        overlayShow: {
           from: { opacity: 0 },
           to: { opacity: 1 },
         },
-        'content-show': {
+        contentShow: {
           from: { opacity: 0, transform: 'translate(-50%, -48%) scale(0.96)' },
           to: { opacity: 1, transform: 'translate(-50%, -50%) scale(1)' },
         },
+        slideIn: {
+          from: { transform: 'translateX(100%)' },
+          to: { transform: 'translateX(0)' },
+        },
+        slideOut: {
+          from: { transform: 'translateX(0)' },
+          to: { transform: 'translateX(100%)' },
+        },
       },
       animation: {
-        'overlay-show': 'overlay-show 150ms cubic-bezier(0.16, 1, 0.3, 1)',
-        'content-show': 'content-show 150ms cubic-bezier(0.16, 1, 0.3, 1)',
+        'overlay-show': 'overlayShow 150ms cubic-bezier(0.16, 1, 0.3, 1)',
+        'content-show': 'contentShow 150ms cubic-bezier(0.16, 1, 0.3, 1)',
+        'slide-in': 'slideIn 0.2s ease',
+        'slide-out': 'slideOut 0.2s ease',
       },
       fontFamily: {
         primary: ['"Press Start 2P"', 'sans-serif'],

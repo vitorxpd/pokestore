@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import {
   PokemonsResponse,
@@ -17,13 +17,15 @@ export function useHomeController() {
   const [currentPokemon, setCurrentPokemon] = useState<null | Pokemon>(null);
   const [pokemonModalIsOpen, setPokemonModalIsOpen] = useState(false);
   const [filterModalIsOpen, setFilterModalIsOpen] = useState(false);
-  const [filterType, setFilterType] = useState<null | string>(null);
+  const [currentFilter, setCurrentFilter] = useState<null | string>(null);
 
   const filteredPokemons = pokemons.filter((pokemon) => {
-    const pokemonType = pokemon.types.find((type) => type.name === filterType);
+    const pokemonType = pokemon.types.find(
+      (type) => type.name === currentFilter,
+    );
 
-    if (filterType) {
-      return pokemonType?.name === filterType;
+    if (currentFilter) {
+      return pokemonType?.name === currentFilter;
     } else {
       return pokemons;
     }
@@ -47,8 +49,8 @@ export function useHomeController() {
     setFilterModalIsOpen(false);
   }
 
-  function addFilterType(type: null | string) {
-    setFilterType(type);
+  function addCurrentFilter(filter: null | string) {
+    setCurrentFilter(filter);
   }
 
   useEffect(() => {
@@ -75,7 +77,7 @@ export function useHomeController() {
 
   useEffect(() => {
     async function lazyLoading() {
-      if (filterType) {
+      if (currentFilter) {
         return;
       }
 
@@ -102,9 +104,9 @@ export function useHomeController() {
     return () => {
       window.removeEventListener('scroll', lazyLoading);
     };
-  }, [pokemonData, filterType]);
+  }, [pokemonData, currentFilter]);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     async function loadPokemons() {
       setIsLoading(true);
       await delay();
@@ -143,10 +145,7 @@ export function useHomeController() {
             weight,
           };
 
-          setPokemons((prevState) => [
-            ...prevState.sort((a, b) => a.id - b.id),
-            newPokemon,
-          ]);
+          setPokemons((prevState) => [...prevState, newPokemon]);
         } catch {
           //
         } finally {
@@ -163,12 +162,12 @@ export function useHomeController() {
     currentPokemon,
     pokemonModalIsOpen,
     filterModalIsOpen,
-    filterType,
+    currentFilter,
     filteredPokemons,
     openPokemonModal,
     closePokemonModal,
     openFilterModal,
     closeFilterModal,
-    addFilterType,
+    addCurrentFilter,
   };
 }
