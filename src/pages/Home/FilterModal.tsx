@@ -74,7 +74,7 @@ export function FilterModal({
         className={cn(
           'absolute right-0 top-0 overflow-auto',
           'h-full w-[300px] bg-white p-4 desktop:w-[340px]',
-          open ? 'block animate-slide-in' : 'hidden',
+          open ? 'animate-slide-in block' : 'hidden',
           closeTransition && 'animate-slide-out',
         )}
       >
