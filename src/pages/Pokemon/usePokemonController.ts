@@ -63,7 +63,7 @@ export function usePokemonController() {
           id,
           name,
           price,
-          sprite: sprites.other.dream_world.front_default,
+          sprite: sprites.other.home.front_default,
           types: formattedTypes,
           weight,
         };

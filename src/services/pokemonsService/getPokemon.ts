@@ -14,7 +14,7 @@ export interface PokemonResponse {
   }[];
   sprites: {
     other: {
-      dream_world: {
+      home: {
         front_default: string;
       };
     };
