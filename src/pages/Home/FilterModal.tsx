@@ -92,10 +92,13 @@ export function FilterModal({
 
                 {currentFilter && (
                   <button
-                    className="text-[8px] underline opacity-60 desktop:text-[10px]"
+                    className="text-[8px] desktop:text-[10px]"
                     onClick={() => handleApplyFilter(null)}
                   >
-                    clear filter: {currentFilter}
+                    clear filter:
+                    <span className="text-red-primary underline">
+                      ({currentFilter})
+                    </span>
                   </button>
                 )}
 
