@@ -30,7 +30,7 @@ export function Home() {
       )}
     >
       {currentFilter && (
-        <div className="mb-[10px] w-[calc((180px+24px)*2)] desktop:mb-6 desktop:w-[calc((275px+37px)*4)]">
+        <div className="mb-[10px] w-[calc((180px+14px)*2)] desktop:mb-6 desktop:w-[calc((275px+28px)*4)]">
           <p className="text-[10px] opacity-60 desktop:text-2xl">
             results for all {currentFilter} type pokémon
           </p>
@@ -43,7 +43,7 @@ export function Home() {
 
       <FilterTrigger onOpenFilterModal={openFilterModal} />
 
-      <ul className="grid grid-cols-[repeat(2,calc(180px+24px))] justify-items-center gap-[14px] desktop:grid-cols-[repeat(4,calc(275px+37px))] desktop:gap-[38px]">
+      <ul className="grid grid-cols-[repeat(2,calc(180px+24px))] justify-items-center desktop:grid-cols-[repeat(4,calc(275px+37px))]">
         {filteredPokemons.map((pokemon) => (
           <PokemonCard
             key={pokemon.id}
