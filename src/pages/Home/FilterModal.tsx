@@ -1,3 +1,4 @@
+import * as Dialog from '@radix-ui/react-dialog';
 import { useEffect, useState } from 'react';
 
 import { cn } from '../../utils/cn';
@@ -62,63 +63,63 @@ export function FilterModal({
   }, [open]);
 
   return (
-    <div
-      className={cn(
-        'fixed left-0 top-0 z-50 h-full w-full',
-        open ? 'block' : 'hidden',
-      )}
-    >
-      <div className="h-full w-full bg-black/70" onClick={handleCloseModal} />
-
-      <div
-        className={cn(
-          'absolute right-0 top-0 overflow-auto',
-          'h-full w-[300px] bg-white p-4 desktop:w-[340px]',
-          open ? 'animate-slide-in block' : 'hidden',
-          closeTransition && 'animate-slide-out',
-        )}
-      >
-        <div className="flex justify-end">
-          <button
-            className="flex items-center justify-center"
-            onClick={handleCloseModal}
-          >
-            <span className="text-2xl opacity-60">X</span>
-          </button>
-        </div>
-
-        <div className="mt-6 flex flex-col items-end">
-          <div className="flex flex-col items-end gap-1">
-            <strong className="text-sm desktop:text-lg">filter by type</strong>
-
-            {currentFilter && (
+    <Dialog.Root open={open}>
+      <Dialog.Portal>
+        <Dialog.Overlay className="fixed inset-0 bg-blackA6 data-[state=closed]:animate-slide-out data-[state=open]:animate-slide-in" />
+        <Dialog.Content
+          className={cn(
+            'absolute right-0 top-0 z-50 h-full overflow-auto bg-white',
+            open ? 'block animate-slide-in' : 'hidden',
+            closeTransition && 'animate-slide-out',
+          )}
+          onInteractOutside={handleCloseModal}
+        >
+          <div className="w-[300px] p-4 desktop:w-[340px]">
+            <div className="flex justify-end">
               <button
-                className="text-[8px] underline opacity-60 desktop:text-[10px]"
-                onClick={() => handleApplyFilter(null)}
+                className="flex items-center justify-center"
+                onClick={handleCloseModal}
               >
-                clear filter: {currentFilter}
+                <span className="text-2xl opacity-60">X</span>
               </button>
-            )}
+            </div>
 
-            {!currentFilter && (
-              <p className="text-[8px] opacity-60 desktop:text-[10px]">
-                no filter applied
-              </p>
-            )}
+            <div className="mt-6 flex flex-col items-end">
+              <div className="flex flex-col items-end gap-1">
+                <strong className="text-sm desktop:text-lg">
+                  filter by type
+                </strong>
+
+                {currentFilter && (
+                  <button
+                    className="text-[8px] underline opacity-60 desktop:text-[10px]"
+                    onClick={() => handleApplyFilter(null)}
+                  >
+                    clear filter: {currentFilter}
+                  </button>
+                )}
+
+                {!currentFilter && (
+                  <p className="text-[8px] opacity-60 desktop:text-[10px]">
+                    no filter applied
+                  </p>
+                )}
+              </div>
+
+              <ul className="mt-4">
+                {filters.types.map((type) => (
+                  <TypeItem
+                    key={type}
+                    label={type}
+                    action={() => handleApplyFilter(type)}
+                  />
+                ))}
+              </ul>
+            </div>
           </div>
-
-          <ul className="mt-4">
-            {filters.types.map((type) => (
-              <TypeItem
-                key={type}
-                label={type}
-                action={() => handleApplyFilter(type)}
-              />
-            ))}
-          </ul>
-        </div>
-      </div>
-    </div>
+        </Dialog.Content>
+      </Dialog.Portal>
+    </Dialog.Root>
   );
 }
 interface TypeItemProps {
