@@ -5,7 +5,7 @@ import { cn } from '../utils/cn';
 
 interface ModalProps {
   open: boolean;
-  onClose: () => void;
+  onClose?: () => void;
   children: ReactNode;
 }
 
