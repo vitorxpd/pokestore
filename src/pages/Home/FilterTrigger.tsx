@@ -7,12 +7,7 @@ interface FilterTriggerProps {
 
 export function FilterTrigger({ onOpenFilterModal }: FilterTriggerProps) {
   return (
-    <div
-      className={cn(
-        'mb-[10px] flex w-[calc((180px+14px)*2)] justify-end',
-        'desktop:absolute desktop:z-10 desktop:w-[calc((275px+37px+37px)*4)]',
-      )}
-    >
+    <div className="mb-[10px] flex w-[calc((180px+14px)*2)] justify-end desktop:absolute desktop:z-10 desktop:w-[calc((275px+37px+37px)*4)]">
       <button
         className={cn(
           'flex h-[50px] w-[50px] items-center justify-center desktop:h-[76px] desktop:w-[76px]',
