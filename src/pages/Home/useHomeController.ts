@@ -19,17 +19,19 @@ export function useHomeController() {
   const [filterModalIsOpen, setFilterModalIsOpen] = useState(false);
   const [currentFilter, setCurrentFilter] = useState<null | string>(null);
 
-  const filteredPokemons = pokemons.filter((pokemon) => {
-    const pokemonType = pokemon.types.find(
-      (type) => type.name === currentFilter,
-    );
+  const filteredPokemons = pokemons
+    .sort((a, b) => a.id - b.id)
+    .filter((pokemon) => {
+      const pokemonType = pokemon.types.find(
+        (type) => type.name === currentFilter,
+      );
 
-    if (currentFilter) {
-      return pokemonType?.name === currentFilter;
-    } else {
-      return pokemons;
-    }
-  });
+      if (currentFilter) {
+        return pokemonType?.name === currentFilter;
+      } else {
+        return pokemons;
+      }
+    });
 
   function openPokemonModal(pokemon: Pokemon) {
     setCurrentPokemon(pokemon);
