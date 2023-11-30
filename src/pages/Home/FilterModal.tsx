@@ -74,7 +74,7 @@ export function FilterModal({
         className={cn(
           'absolute right-0 top-0 overflow-auto',
           'h-full w-[300px] bg-white p-4 desktop:w-[340px]',
-          open ? 'animate-slide-in block' : 'hidden',
+          open ? 'block animate-slide-in' : 'hidden',
           closeTransition && 'animate-slide-out',
         )}
       >
@@ -93,7 +93,7 @@ export function FilterModal({
 
             {currentFilter && (
               <button
-                className="text-[8px] opacity-60 desktop:text-[10px]"
+                className="text-[8px] underline opacity-60 desktop:text-[10px]"
                 onClick={() => handleApplyFilter(null)}
               >
                 clear filter: {currentFilter}
