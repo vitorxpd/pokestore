@@ -27,7 +27,7 @@ export function PokemonModal({ pokemon, open, onClose }: PokemonModalProps) {
     <Modal open={open} onClose={onClose}>
       <div
         className={cn(
-          'flex w-[400px] flex-col px-10 pb-8 pt-12 desktop:w-[818px] desktop:flex-row desktop:gap-[30px]',
+          'flex w-[360px] flex-col px-10 pb-8 pt-12 desktop:w-[818px] desktop:flex-row desktop:gap-[30px]',
           'relative rounded-[30px] bg-white',
         )}
       >
