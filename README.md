@@ -5,8 +5,12 @@ Pokéstore is a small e-commerce project built using React and Tailwind CSS, int
 The application is deployed at https://xpd-pokestore.netlify.app
 
 ## Technologies Used
+
 - React
 - Tailwind CSS
+- Radix UI
+- Axios
+- React Router
 - Vite
 
 ## Configuration
