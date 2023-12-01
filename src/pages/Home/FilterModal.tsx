@@ -74,7 +74,7 @@ export function FilterModal({
           )}
           onInteractOutside={handleCloseModal}
         >
-          <div className="w-[300px] p-4 desktop:w-[340px]">
+          <div className="w-[240px] p-4 desktop:w-[340px]">
             <div className="flex justify-end">
               <button
                 className="flex items-center justify-center"
