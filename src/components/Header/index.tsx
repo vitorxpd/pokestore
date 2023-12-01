@@ -24,7 +24,7 @@ export function Header() {
           <Link to="/">
             <img
               src={logo}
-              alt="Pokéstore Logo"
+              alt="Pokestore Logo"
               className="desktop:h-[78px] desktop:w-[312px]"
             />
           </Link>

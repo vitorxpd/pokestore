@@ -21,7 +21,7 @@ export function SearchForm() {
       <input
         ref={inputRef}
         name="name"
-        placeholder="search for your pokémon here"
+        placeholder="search for your pokemon here"
         className={cn(
           'desktop:pr-15 h-9 w-full py-3 pl-4 pr-[52px] desktop:h-[42px] desktop:w-[416px] desktop:pl-5',
           'text-[10px] placeholder:text-[10px] placeholder:text-[#B0B0B0] desktop:text-xs desktop:placeholder:text-xs',

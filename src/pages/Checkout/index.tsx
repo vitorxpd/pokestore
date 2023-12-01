@@ -24,12 +24,12 @@ export function Checkout() {
           <strong className="block text-[18px] desktop:text-2xl">cart</strong>
           <img
             src={pokeballs}
-            alt="Pokéballs"
+            alt="Pokeballs"
             className="mx-auto h-[112px] desktop:w-[332px]"
           />
 
           <p className="mt-6 text-center text-[10px] opacity-60 desktop:text-base">
-            there is no pokémon here..
+            there is no pokemon here..
           </p>
           <p className="text-center text-[10px] opacity-60 desktop:text-base">
             Gotta catch&apos;em all!

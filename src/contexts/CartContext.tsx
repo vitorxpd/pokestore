@@ -59,7 +59,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
         ]);
         feedback(`${pokemon.name} adicionado!`);
       } else {
-        feedback('você já adicionou este pokémon!');
+        feedback('você já adicionou este pokemon!');
       }
     },
     [cartItems],
