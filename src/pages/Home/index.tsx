@@ -43,7 +43,7 @@ export function Home() {
 
       <FilterTrigger onOpenFilterModal={openFilterModal} />
 
-      <ul className="grid grid-cols-[repeat(2,calc(180px+24px))] justify-items-center desktop:grid-cols-[repeat(4,calc(275px+37px))]">
+      <ul className="grid grid-cols-[repeat(2,calc(180px+24px))] justify-items-center gap-y-[14px] desktop:grid-cols-[repeat(4,calc(275px+37px))] desktop:gap-y-9">
         {filteredPokemons.map((pokemon) => (
           <PokemonCard
             key={pokemon.id}
