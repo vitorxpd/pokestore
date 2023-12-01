@@ -6,31 +6,31 @@ The application is deployed at https://xpd-pokestore.netlify.app
 
 ## Technologies Used
 
-- React
-- Tailwind CSS
-- Radix UI
-- Axios
-- React Router
-- Vite
+- **React**
+- **Tailwind CSS**
+- **Radix UI**
+- **Axios**
+- **React Router**
+- **Vite**
 
 ## Configuration
 The project comes pre-configured with the following tools:
 
-- ESLint with Prettier
-- Husky
-- Lint-staged
-- Commitlint with Conventional Commits
+- **ESLint with Prettier**
+- **Husky**
+- **Lint-staged**
+- **Commitlint with Conventional Commits**
 
 These configurations ensure a consistent and clean codebase, as well as enforce commit message conventions.
 
 ## Functionalities
 Pokéstore offers the following key functionalities:
 
-- Add items to the shopping cart
-- Remove items from the shopping cart
-- Increase item quantity in the cart
-- Filter items by type
-- Lazy loading for improved performance
+- **Add items to the shopping cart**
+- **Remove items from the shopping cart**
+- **Increase item quantity in the cart**
+- **Filter items by type**
+- **Lazy loading for improved performance**
 
 Explore the world of Pokémon and enhance your shopping experience with Pokéstore!
 
