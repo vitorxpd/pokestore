@@ -42,7 +42,7 @@ export function Pokemon() {
 
           <div className="mt-[38px] flex flex-col items-center gap-3 desktop:mt-8">
             <p className="text-center text-[10px] opacity-60 desktop:text-sm">
-              the pokedex doesn&apos;t have any info about this pokemon :(
+              the pokédex doesn&apos;t have any info about this pokémon :(
             </p>
 
             <Link to="/" className="text-[10px] opacity-40 desktop:text-sm">
