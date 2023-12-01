@@ -1,6 +1,6 @@
 # Pokéstore
 
-Pokéstore is a small e-commerce project built using React and Tailwind CSS, integrating data from the PokéAPI (https://pokeapi.co/). This application allows users to browse and purchase Pokémon-related items.
+Pokéstore is a small e-commerce project built using React and Tailwind CSS, integrating data from the [PokéAPI](https://pokeapi.co). This application allows users to browse and purchase Pokémon-related items.
 
 The application is deployed at https://xpd-pokestore.netlify.app
 
