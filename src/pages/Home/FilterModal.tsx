@@ -68,7 +68,7 @@ export function FilterModal({
         <Dialog.Overlay className="fixed inset-0 bg-blackA6 data-[state=closed]:animate-slide-out data-[state=open]:animate-slide-in" />
         <Dialog.Content
           className={cn(
-            'absolute right-0 top-0 z-50 h-full overflow-auto bg-white',
+            'absolute right-0 top-0 z-50 h-screen overflow-auto bg-white',
             open ? 'block animate-slide-in' : 'hidden',
             closeTransition && 'animate-slide-out',
           )}
