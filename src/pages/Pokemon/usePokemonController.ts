@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
+import { Pokemon } from '../../interfaces/Pokemon';
 import { pokemonsService } from '../../services/pokemonsService';
-import { Pokemon } from '../../types/pokemon';
 import { delay } from '../../utils/delay';
 import { getPokemonPrice } from '../../utils/getPokemonPrice';
 import { pokemonColors } from '../../utils/pokemonColors';

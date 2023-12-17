@@ -2,7 +2,7 @@ import cartIcon from '../assets/icons/cart.svg';
 import pokeball from '../assets/pokeball.svg';
 import { Modal } from '../components/Modal';
 import { useCart } from '../hooks/useCart';
-import { Pokemon } from '../types/pokemon';
+import { Pokemon } from '../interfaces/Pokemon';
 import { cn } from '../utils/cn';
 import { priceFormatter } from '../utils/priceFormatter';
 

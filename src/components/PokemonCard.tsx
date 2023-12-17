@@ -1,6 +1,6 @@
 import cartIcon from '../assets/icons/cart.svg';
 import pokeball from '../assets/pokeball.svg';
-import { Pokemon } from '../types/pokemon';
+import { Pokemon } from '../interfaces/Pokemon';
 import { cn } from '../utils/cn';
 import { priceFormatter } from '../utils/priceFormatter';
 

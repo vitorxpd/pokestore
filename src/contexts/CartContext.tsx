@@ -6,7 +6,7 @@ import {
   useState,
 } from 'react';
 
-import { Pokemon } from '../types/pokemon';
+import { Pokemon } from '../interfaces/Pokemon';
 import { feedback } from '../utils/feedback';
 
 export interface CartItem extends Pokemon {

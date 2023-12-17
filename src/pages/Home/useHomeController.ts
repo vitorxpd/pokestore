@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
 
+import { Pokemon } from '../../interfaces/Pokemon';
 import {
   PokemonsResponse,
   pokemonsService,
 } from '../../services/pokemonsService';
 import { getPokemon } from '../../services/pokemonsService/getPokemon';
-import { Pokemon } from '../../types/pokemon';
 import { delay } from '../../utils/delay';
 import { getPokemonPrice } from '../../utils/getPokemonPrice';
 import { pokemonColors } from '../../utils/pokemonColors';
