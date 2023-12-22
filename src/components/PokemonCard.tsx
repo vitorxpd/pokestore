@@ -10,20 +10,10 @@ interface CardProps {
 }
 
 export function PokemonCard({ pokemon, onOpenModal }: CardProps) {
-  const { base_experience, height, id, name, price, sprite, types, weight } =
-    pokemon;
+  const { id, name, price, sprite, types } = pokemon;
 
   function handleOpenModal() {
-    onOpenModal({
-      base_experience,
-      height,
-      id,
-      name,
-      price,
-      sprite,
-      types,
-      weight,
-    });
+    onOpenModal(pokemon);
   }
 
   return (
