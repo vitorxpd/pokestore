@@ -5,16 +5,16 @@ import { cn } from '../../utils/cn';
 
 interface FilterModalProps {
   open: boolean;
-  currentFilter: null | string;
+  urlFilter: null | string;
   onClose: () => void;
-  onAddCurrentFilter: (filter: null | string) => void;
+  onAddUrlFilter: (filter: null | string) => void;
 }
 
 export function FilterModal({
   open,
-  currentFilter,
+  urlFilter,
   onClose,
-  onAddCurrentFilter,
+  onAddUrlFilter,
 }: FilterModalProps) {
   const [closeTransition, setCloseTransition] = useState(false);
 
@@ -52,7 +52,7 @@ export function FilterModal({
   }
 
   function handleApplyFilter(filter: null | string) {
-    onAddCurrentFilter(filter);
+    onAddUrlFilter(filter);
     handleCloseModal();
   }
 
@@ -90,19 +90,19 @@ export function FilterModal({
                   filter by type
                 </strong>
 
-                {currentFilter && (
+                {urlFilter && (
                   <button
                     className="text-[8px] desktop:text-[10px]"
                     onClick={() => handleApplyFilter(null)}
                   >
                     clear filter:
                     <span className="text-red-primary underline">
-                      ({currentFilter})
+                      ({urlFilter})
                     </span>
                   </button>
                 )}
 
-                {!currentFilter && (
+                {!urlFilter && (
                   <p className="text-[8px] opacity-60 desktop:text-[10px]">
                     no filter applied
                   </p>

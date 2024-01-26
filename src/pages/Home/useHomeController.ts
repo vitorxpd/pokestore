@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 
 import { Pokemon } from '../../interfaces/Pokemon';
 import {
@@ -17,17 +18,18 @@ export function useHomeController() {
   const [currentPokemon, setCurrentPokemon] = useState<null | Pokemon>(null);
   const [pokemonModalIsOpen, setPokemonModalIsOpen] = useState(false);
   const [filterModalIsOpen, setFilterModalIsOpen] = useState(false);
-  const [currentFilter, setCurrentFilter] = useState<null | string>(null);
+
+  const [urlFilter, setUrlFilter] = useSearchParams();
 
   const filteredPokemons = pokemons
     .sort((a, b) => a.id - b.id)
     .filter((pokemon) => {
       const pokemonType = pokemon.types.find(
-        (type) => type.name === currentFilter,
+        (type) => type.name === urlFilter.get('type'),
       );
 
-      if (currentFilter) {
-        return pokemonType?.name === currentFilter;
+      if (urlFilter.get('type')) {
+        return pokemonType?.name === urlFilter.get('type');
       } else {
         return pokemons;
       }
@@ -51,8 +53,8 @@ export function useHomeController() {
     setFilterModalIsOpen(false);
   }
 
-  function addCurrentFilter(filter: null | string) {
-    setCurrentFilter(filter);
+  function addUrlFilter(filter: null | string) {
+    filter ? setUrlFilter({ type: filter }) : setUrlFilter(undefined);
   }
 
   useEffect(() => {
@@ -79,7 +81,7 @@ export function useHomeController() {
 
   useEffect(() => {
     async function lazyLoading() {
-      if (currentFilter) {
+      if (urlFilter.get('type')) {
         return;
       }
 
@@ -106,7 +108,7 @@ export function useHomeController() {
     return () => {
       window.removeEventListener('scroll', lazyLoading);
     };
-  }, [pokemonData, currentFilter]);
+  }, [pokemonData, urlFilter]);
 
   useEffect(() => {
     async function loadPokemons() {
@@ -164,12 +166,12 @@ export function useHomeController() {
     currentPokemon,
     pokemonModalIsOpen,
     filterModalIsOpen,
-    currentFilter,
+    urlFilter: urlFilter.get('type'),
     filteredPokemons,
     openPokemonModal,
     closePokemonModal,
     openFilterModal,
     closeFilterModal,
-    addCurrentFilter,
+    addUrlFilter,
   };
 }
